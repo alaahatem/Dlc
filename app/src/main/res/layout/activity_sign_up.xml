@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/signup"
+    tools:context="com.dlc.hr_module.Signup.SignUp">
+
+    <TextView
+        android:id="@+id/signuptv"
+        android:layout_width="130sp"
+        android:layout_height="41sp"
+        android:layout_marginEnd="215sp"
+        android:layout_marginLeft="32sp"
+        android:layout_marginRight="215sp"
+        android:layout_marginStart="32sp"
+        android:layout_marginTop="26dp"
+        android:text="@string/signup"
+        android:textColor="@android:color/white"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="283dp"
+        android:layout_height="569dp"
+
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="108dp"
+        android:src="@drawable/usersignup"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.626" />
+
+    <RelativeLayout
+        android:layout_width="235dp"
+        android:layout_height="343dp"
+        android:layout_marginBottom="88dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="250dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.523">
+
+        <TextView
+
+            android:id="@+id/nametv"
+
+            android:layout_width="match_parent"
+            android:layout_height="20sp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/name"
+
+            android:textColor="@color/signup"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/nameet"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:layout_below="@id/nametv"
+            android:background="@drawable/edittextbackground"
+            android:hint="Enter your name "
+            android:inputType="textPersonName"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/emailtv"
+            android:layout_width="match_parent"
+            android:layout_height="20sp"
+            android:layout_below="@id/nameet"
+            android:layout_marginTop="12sp"
+            android:text="@string/email"
+            android:textColor="@color/signup"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/emailet"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:layout_below="@+id/emailtv"
+            android:background="@drawable/edittextbackground"
+            android:hint="Enter your email"
+            android:inputType="textEmailAddress"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/passtv"
+            android:layout_width="match_parent"
+            android:layout_height="20sp"
+            android:layout_below="@+id/emailet"
+            android:layout_marginTop="12sp"
+            android:text="@string/password"
+            android:textColor="@color/signup"
+            android:textSize="16sp"
+
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/passet"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:layout_below="@+id/passtv"
+
+            android:background="@drawable/edittextbackground"
+            android:hint="Enter your password"
+            android:inputType="textPassword"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/vpasstv"
+            android:layout_width="match_parent"
+            android:layout_height="20sp"
+            android:layout_below="@+id/passet"
+            android:layout_marginTop="12sp"
+            android:text="@string/Verify_password"
+            android:textColor="@color/signup"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/vpasset"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/vpasstv"
+            android:background="@drawable/edittextbackground"
+
+            android:hint="Confirm your password"
+            android:inputType="textPassword"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/vpasset"
+            android:layout_marginTop="14dp"
+            android:background="@color/signup"
+            android:text="@string/next"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>

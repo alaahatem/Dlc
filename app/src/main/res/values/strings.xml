@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HR_Module</string>
+    <string name="name">NAME*</string>
+    <string name="email">EMAIL*</string>
+    <string name="password">PASSWORD*</string>
+    <string name="Verify_password">VERIFY PASSWORD*</string>
+    <string name="next">Continue</string>
+    <string name="signup">SIGN UP</string>
+</resources>
