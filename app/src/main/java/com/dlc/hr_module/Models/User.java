@@ -1,5 +1,8 @@
 package com.dlc.hr_module.Models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.net.URI;
 import java.util.Date;
 
@@ -8,7 +11,12 @@ import java.util.Date;
  */
 
 public class User {
-    private Integer user_id ;
+    @SerializedName("token")
+    @Expose
+    private String token ;
+   @SerializedName("name")
+   @Expose
+    private String name;
     private  Integer company_id;
     private String user_image;
     private Date birthdate;
@@ -17,15 +25,43 @@ public class User {
     private String position;
     private String title;
     private String team;
+    @SerializedName("email")
+    @Expose
     private String email;
     private Integer manager_id;
 
-    public Integer getUser_id() {
-        return user_id;
+    @SerializedName("password")
+    @Expose
+    private String password;
+
+    public User(String name, String email, String password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
     }
 
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public Integer getCompany_id() {
