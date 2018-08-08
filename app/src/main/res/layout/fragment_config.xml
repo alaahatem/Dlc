@@ -269,7 +269,7 @@
 
 
                 <ImageView
-                    android:src="@drawable/pinkish"
+                    android:src="@drawable/lightblue"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -310,19 +310,16 @@
                 android:layout_gravity="center_horizontal|center_vertical">
 
 
-                <ImageView
-                    android:src="@drawable/plain"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
                 <TextView
                     android:id="@+id/create_company"
-                    android:layout_width="79sp"
-                    android:layout_height="46sp"
-                    android:textColor="@android:color/white"
-                    android:text="@string/create_company"
-                    android:layout_centerInParent="true"
-                    android:textSize="13sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#f76a9c"
+                    android:gravity="center_horizontal"
+                    tools:text="CREATE
+COMPANY!"
+
 
                     />
 
