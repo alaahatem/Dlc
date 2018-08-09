@@ -10,14 +10,17 @@
     android:layout_gravity="center"
     android:orientation="vertical"
 
+
     android:background="@drawable/samplebackground">
     <ImageView
+        android:background="@android:color/transparent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/green"
         android:scaleType="centerCrop"
         />
     <LinearLayout
+        android:id="@+id/vaclayout"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:gravity="top"
@@ -34,6 +37,8 @@
             android:id="@+id/popuptv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textAlignment="center"
 
             android:text="@string/vacation_dates"
             android:textColor="@android:color/white"
@@ -47,7 +52,7 @@
         </View>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="3"
 
@@ -66,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10sp"
+                    android:layout_marginTop="5sp"
                     android:textSize="51sp"
                     android:text="21"
                     android:textColor="@android:color/white" />
@@ -76,47 +81,109 @@
                     android:layout_width="53sp"
                     android:layout_height="36sp"
                     android:layout_below="@+id/vac_num"
-                    android:text="Vacation days"
+                    android:text="Vacation Days"
                     android:layout_centerHorizontal="true"
                     android:textColor="@android:color/white"
                     android:textSize="12sp" />
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50sp"
+                    android:layout_height="20sp"
                     
                     android:textColor="@android:color/white"
                     android:layout_below="@+id/vac_tex"
                     android:layout_centerHorizontal="true"
+                    android:text="Edit"
+                    android:textSize="12sp"
+                    android:layout_marginTop="5sp"
+                    android:background="@drawable/white_borders"
                     />
 
             </RelativeLayout>
 
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                >
+                android:layout_alignEnd="@+id/textView"
+                android:layout_alignParentTop="true"
+                android:layout_alignRight="@+id/textView"
+                android:layout_weight="1">
+
                 <TextView
-                    android:layout_width="41sp"
-                    android:layout_height="61sp"
+                    android:id="@+id/sick_days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5sp"
+                    android:text="9"
+                    android:textColor="@android:color/white"
+                    android:textSize="51sp" />
+
+                <TextView
+                    android:id="@+id/secondtv"
+                    android:layout_width="43sp"
+                    android:layout_height="36sp"
+                    android:layout_below="@id/sick_days"
+                    android:layout_centerHorizontal="true"
+                    android:text="Sick Leaves"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp" />
+                <Button
+                    android:layout_width="50sp"
+                    android:layout_height="20sp"
+                    android:layout_marginTop="5sp"
+                    android:textSize="12sp"
+                    android:text="Edit"
+                    android:layout_below="@+id/secondtv"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/white_borders"
+                    android:layout_centerHorizontal="true"
                     />
-                
-            </LinearLayout>
-            <LinearLayout
+
+            </RelativeLayout>
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
                 <TextView
-                android:layout_width="41sp"
-                android:layout_height="61sp"
 
-                    android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                    android:textSize="51sp"
+                    android:text="21"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="5sp"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/sicktv" />
+                <TextView
+                    android:id="@+id/thirdview"
+                    android:layout_width="69sp"
+                    android:layout_height="36sp"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    android:text="Working from home"
+                    android:layout_centerHorizontal="true"
+
+                    android:layout_below="@+id/sicktv"
                     />
-            </LinearLayout>
+                <Button
+                    android:layout_width="50sp"
+                    android:layout_height="20sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5sp"
+                    android:textSize="12sp"
+                    android:background="@drawable/white_borders"
+                    android:layout_below="@+id/thirdview"
+                    android:text="Edit"
+                    android:textColor="@android:color/white"
+
+                    />
+            </RelativeLayout>
 
 
         </LinearLayout>
+        
 
         <!--<Button-->
             <!--android:id="@+id/Done"-->
@@ -131,4 +198,15 @@
 
             <!--android:textStyle="bold" />-->
     </LinearLayout>
+    <Button
+        android:id="@+id/done_vac"
+        android:layout_width="240sp"
+        android:layout_height="wrap_content"
+        android:text="@string/done"
+        android:layout_below="@+id/vaclayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20sp"
+        android:background="@android:color/white"
+        android:textColor="@color/pink"
+        />
 </RelativeLayout>

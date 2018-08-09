@@ -93,7 +93,7 @@
         </android.support.v7.widget.CardView>
 <!-- Column 2-->
         <android.support.v7.widget.CardView
-
+            android:id="@+id/levelcv"
             android:layout_height="0dp"
             android:layout_width="0dp"
 
@@ -137,6 +137,7 @@
 
         <!-- Column 3-->
         <android.support.v7.widget.CardView
+            android:id="@+id/vacation_card"
             android:layout_height="0dp"
             android:layout_width="0dp"
 
