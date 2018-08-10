@@ -16,6 +16,11 @@ import com.google.gson.annotations.SerializedName;
     @Expose
     private String level_name;
 
+    public Level(Integer level_number, String level_name) {
+        this.level_number = level_number;
+        this.level_name = level_name;
+    }
+
     public Integer getLevel_number() {
         return level_number;
     }

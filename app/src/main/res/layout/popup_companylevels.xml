@@ -14,7 +14,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/levels"
+        android:src="@drawable/company_levels"
         android:scaleType="centerCrop"
         />
     <LinearLayout
@@ -61,6 +61,7 @@
             android:orientation="horizontal"
             >
             <EditText
+                android:id="@+id/new_item"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="8"
