@@ -18,10 +18,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dlc.hr_module.Adapters.LevelAdapter;
+import com.dlc.hr_module.Models.Criteria;
+import com.dlc.hr_module.Models.CriteriaObject;
 import com.dlc.hr_module.Models.Level;
 import com.dlc.hr_module.R;
 
@@ -32,9 +35,13 @@ public class ConfigFragment extends Fragment {
         public static final String CEO = "CEO";
         public static final String managers = " Managers";
         public static final String member = "Team Member";
+    ArrayList<EditText> editTexts;
+    ArrayList<EditText> scores;
         private LevelAdapter levelAdapter;
         private   ArrayList<Level> levels = new ArrayList<>();
     private LinearLayout linearLayout;
+
+    private LinearLayout linearlevel;
     public EditText new_item;
     CardView company_name;
         CardView vacation_card;
@@ -60,7 +67,8 @@ public class ConfigFragment extends Fragment {
         compname_tv = view.findViewById(R.id.compname_tv);
         companyLevel_card =view.findViewById(R.id.levelcv);
         complevel_tv = view.findViewById(R.id.complevel_tv);
-
+        editTexts = new ArrayList<>();
+        scores = new ArrayList<>();
         criteria_card = view.findViewById(R.id.criteria_card);
         ranking_criteria = view.findViewById(R.id.ranking_criteria);
         add_user = view.findViewById(R.id.add_user);
@@ -132,34 +140,25 @@ public void showPopupCompanyName(){
     }
 
     public void showPopupCompanyLevels(){
+    final LinearLayout addview;
+
     Button Done ;
-    final RecyclerView recyclerView;
-        ;
-
-
-        ImageButton send;
-
-
+    ImageButton  add;
     myDialog.setContentView(R.layout.popup_companylevels);
-    recyclerView= myDialog.findViewById(R.id.recyclerview_level);
-    send = myDialog.findViewById(R.id.add_level);
-    new_item = myDialog.findViewById(R.id.new_item);
-    levelAdapter = new LevelAdapter(levels,myDialog.getContext());
-    send.setOnClickListener(new View.OnClickListener() {
+    linearlevel = myDialog.findViewById(R.id.linear_level);
+    add = myDialog.findViewById(R.id.add_edit);
+   addview = myDialog.findViewById(R.id.linear_newlevel);
+    Done = myDialog.findViewById(R.id.done_level);
+    add.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
-            if(!new_item.getText().toString().isEmpty()){
-                Level level = new Level(levels.size()+1,new_item.getText().toString());
-
-                levels.add(level);
-                levelAdapter.notifyDataSetChanged();
-                recyclerView.setAdapter(levelAdapter);
+            View inflatedView = View.inflate(myDialog.getContext(),R.layout.addlevel,addview);
+            if(inflatedView.getParent()!=null){
+                ((ViewGroup)inflatedView.getParent()).removeView(inflatedView);
             }
+            linearlevel.addView(inflatedView);
         }
     });
-    Done = myDialog.findViewById(R.id.done_level);
-
 
     Done.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -186,24 +185,48 @@ myDialog.show();
 
     public void showPopupCriteria(){
         Button done ;
-
-        EditText edit_criteria;
+        final LinearLayout addview;
+        final EditText edit_criteria ,editscore;
+        final ArrayList<Level> criteriaLevels;
+        final ArrayList<CriteriaObject> criteriaObjects;
         ImageButton add;
+        criteriaLevels = new ArrayList<>();
+        criteriaObjects = new ArrayList<>();
         myDialog.setContentView(R.layout.popup_criteria);
+        addview= myDialog.findViewById(R.id.linearView);
         done = myDialog.findViewById(R.id.done_criteria);
         linearLayout = myDialog.findViewById(R.id.linear_criteria);
         edit_criteria = myDialog.findViewById(R.id.edittext_criteria);
+
+        editscore = myDialog.findViewById(R.id.editscore);
         add = myDialog.findViewById(R.id.add_edit);
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText editText = new EditText(myDialog.getContext());
-                linearLayout.addView(editText);
-            }
+
+                View inflatedView = View.inflate(myDialog.getContext(),R.layout.addview,addview);
+                linearLayout.addView(inflatedView);
+                EditText editText = inflatedView.findViewById(R.id.edittext_criteria);
+                EditText score = inflatedView.findViewById(R.id.edittext_score);
+
+
+                CriteriaObject criteriaObject = new CriteriaObject(editText,score);
+                CriteriaObject criteriaObject1 = new CriteriaObject(edit_criteria,editscore);
+                criteriaObjects.add(criteriaObject1);
+                criteriaObjects.add(criteriaObject);
+
+
+                  }
         });
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                for (int i = 0; i <criteriaObjects.size() ; i++) {
+                   Level level = new Level(Integer.parseInt(criteriaObjects.get(i).getCriteria_number().getText().toString()),criteriaObjects.get(i).getCriteria_name().getText().toString());
+                    levels.add(level);
+                }
                 myDialog.dismiss();
             }
         });

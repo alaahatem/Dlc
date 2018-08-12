@@ -46,6 +46,4 @@ public interface ApiService {
                      @Field("criteria")URI image);
 
 
-    @POST
-
 }
