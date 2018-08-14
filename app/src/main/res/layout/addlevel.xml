@@ -10,18 +10,20 @@
         android:weightSum="10">
 
         <EditText
-            android:id="@+id/edittext_level"
+            android:id="@+id/leveledit"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="9.5"
+            android:layout_weight="9"
             android:hint="Enter a new level"
             />
-        <Spinner
+            <Button
+            android:id="@+id/drop"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="0.5">
+            android:layout_weight="1"
 
-        </Spinner>
+            android:src="@drawable/ic_arrow_drop_down_black_24dp"
+        />
 
     </LinearLayout>
 

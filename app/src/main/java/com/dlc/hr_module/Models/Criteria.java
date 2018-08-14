@@ -15,6 +15,11 @@ public class Criteria {
     @Expose
     private float weight;
 
+    public Criteria(float weight, String name) {
+        this.name = name;
+        this.weight = weight;
+    }
+
     public String getName() {
         return name;
     }

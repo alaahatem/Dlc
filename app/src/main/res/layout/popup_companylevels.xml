@@ -2,24 +2,33 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@null">
 
     <ImageView
-        android:layout_width="333sp"
-        android:layout_height="424sp"
-        android:src="@drawable/pinkish"
         android:id="@+id/criteria"
-        android:layout_centerInParent="true"
-        android:scaleType="centerCrop"
-        >
+        android:layout_width="match_parent"
+        android:layout_height="424sp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:scaleType="fitXY"
+
+        android:background="@android:color/transparent"
+        android:src="@drawable/pinkish">
 
     </ImageView>
-
+<LinearLayout
+    android:id="@+id/linear_scroll"
+    android:layout_width="260sp"
+    android:layout_height="200sp"
+    android:layout_centerInParent="true"
+    >
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="260sp"
-        android:layout_height="260sp"
-        android:layout_centerInParent="true">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
         <LinearLayout
             android:id="@+id/linear_level"
             android:layout_width="match_parent"
@@ -39,18 +48,19 @@
                     android:id="@+id/edittext_level"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="9.5"
+                    android:layout_weight="9"
                     android:text="CEO"
                     />
-                    <Spinner
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.5"
-                        android:elevation="100sp"
-                        >
+                <Button
 
-                    </Spinner>
-
+                    android:id="@+id/dropdown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:text="1"
+                    android:src="@drawable/ic_arrow_drop_down_black_24dp"
+                    />
             </LinearLayout>
             <ImageButton
                 android:id="@+id/add_edit"
@@ -59,28 +69,31 @@
                 android:layout_gravity="bottom|start"
                 android:src="@drawable/ic_add_black_24dp"
                 android:background="@android:color/transparent"
-
+                android:layout_alignBottom="@id/scrollView"
+                android:layout_alignLeft="@id/scrollView"
                 />
+
         </LinearLayout>
 
 
     </ScrollView>
+</LinearLayout>
     <Button
         android:id="@+id/done_level"
-        android:layout_width="match_parent"
+        android:layout_width="200sp"
         android:layout_height="wrap_content"
 
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="78sp"
-        android:layout_marginRight="50sp"
+
         android:background="@android:color/white"
 
         android:text="@string/done"
         android:textAlignment="center"
         android:textColor="@color/criteria"
         android:textSize="22sp"
-        android:layout_alignBottom="@+id/criteria"
-        android:layout_marginBottom="25sp"
+
+        android:layout_marginBottom="50sp"
+        android:layout_alignBottom="@id/criteria"
 
 
 

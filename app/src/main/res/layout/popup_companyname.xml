@@ -9,12 +9,12 @@
     android:layout_gravity="center"
     android:orientation="vertical"
 
-    android:background="@drawable/samplebackground"
     >
 <ImageView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:src="@drawable/companyname"
+    android:background="@android:color/transparent"
     android:scaleType="centerCrop"
     />
     <LinearLayout

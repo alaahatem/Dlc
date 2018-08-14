@@ -8,10 +8,7 @@
     android:layout_height="342sp"
     android:padding="5sp"
     android:layout_gravity="center"
-    android:orientation="vertical"
-
-
-    android:background="@drawable/samplebackground">
+    android:orientation="vertical">
     <ImageView
         android:background="@android:color/transparent"
         android:layout_width="match_parent"
@@ -62,19 +59,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-
-
                 >
-
-                <TextView
+                <ViewSwitcher
                     android:id="@+id/vac_num"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/textview_vac"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5sp"
                     android:textSize="51sp"
+
+                    android:onClick="TextviewClicked"
                     android:text="21"
                     android:textColor="@android:color/white" />
+                    <EditText
+                        android:id="@+id/editvacation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </ViewSwitcher>
 
                 <TextView
                     android:id="@+id/vac_tex"
@@ -86,6 +93,7 @@
                     android:textColor="@android:color/white"
                     android:textSize="12sp" />
                 <Button
+                    android:id="@+id/editvac"
                     android:layout_width="50sp"
                     android:layout_height="20sp"
                     
@@ -108,7 +116,11 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignRight="@+id/textView"
                 android:layout_weight="1">
-
+                <ViewSwitcher
+                    android:id="@+id/sick_num"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
                 <TextView
                     android:id="@+id/sick_days"
                     android:layout_width="wrap_content"
@@ -118,17 +130,22 @@
                     android:text="9"
                     android:textColor="@android:color/white"
                     android:textSize="51sp" />
-
+                    <EditText
+                        android:id="@+id/editsick"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </ViewSwitcher>
                 <TextView
                     android:id="@+id/secondtv"
                     android:layout_width="43sp"
                     android:layout_height="36sp"
-                    android:layout_below="@id/sick_days"
+                    android:layout_below="@id/sick_num"
                     android:layout_centerHorizontal="true"
                     android:text="Sick Leaves"
                     android:textColor="@android:color/white"
                     android:textSize="12sp" />
                 <Button
+                    android:id="@+id/edit2"
                     android:layout_width="50sp"
                     android:layout_height="20sp"
                     android:layout_marginTop="5sp"
@@ -145,6 +162,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
+                <ViewSwitcher
+                    android:id="@+id/workhome_num"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
                 <TextView
 
                 android:layout_width="wrap_content"
@@ -155,7 +177,12 @@
                     android:textColor="@android:color/white"
                     android:layout_marginTop="5sp"
                     android:layout_gravity="center_horizontal"
-                    android:id="@+id/sicktv" />
+                    android:id="@+id/hometv" />
+                    <EditText
+                        android:id="@+id/edithome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </ViewSwitcher>
                 <TextView
                     android:id="@+id/thirdview"
                     android:layout_width="69sp"
@@ -165,9 +192,10 @@
                     android:text="Working from home"
                     android:layout_centerHorizontal="true"
 
-                    android:layout_below="@+id/sicktv"
+                    android:layout_below="@+id/workhome_num"
                     />
                 <Button
+                    android:id="@+id/edit3"
                     android:layout_width="50sp"
                     android:layout_height="20sp"
                     android:layout_centerHorizontal="true"
