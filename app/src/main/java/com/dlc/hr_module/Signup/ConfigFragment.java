@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,19 +30,36 @@ import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.dlc.hr_module.Adapters.LevelAdapter;
+import com.dlc.hr_module.ApiService;
+import com.dlc.hr_module.Models.Company;
 import com.dlc.hr_module.Models.Criteria;
 import com.dlc.hr_module.Models.CriteriaObject;
 import com.dlc.hr_module.Models.Level;
 import com.dlc.hr_module.Models.LevelObject;
 import com.dlc.hr_module.R;
+import com.dlc.hr_module.RetrofitClient;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import okhttp3.Request;
+import okio.Buffer;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 
 public class ConfigFragment extends Fragment {
-        public static final String CEO = "CEO";
-        public static final String managers = " Managers";
-        public static final String member = "Team Member";
+        public static String TAG ="request_body";
+     TextView textViewvac,home_tv,sick_days;
+    EditText editvacation,editsick,edithome;
+    String companyName;
+     Button editvac,edit2,edit3;
+    ApiService api;
+        int max_vac= 21;
+        int max_sick = 9;
+        int max_home=21;
 
 ImageView comname,pinkish,purple,green;
     ArrayList<EditText> editTexts;
@@ -52,11 +70,13 @@ ImageView comname,pinkish,purple,green;
     private LinearLayout linearLayout;
     private  ArrayList<LevelObject> levelObjects ;
     private LinearLayout linearlevel;
+    private ArrayList<CriteriaObject> criteriaObjects;
     public EditText new_item;
     CardView company_name;
         CardView vacation_card;
         CardView companyLevel_card;
         CardView criteria_card;
+        CardView createCompany;
         Dialog  myDialog;
         RelativeLayout comp_rel;
         TextView company_details,compname_tv,complevel_tv,ranking_criteria,add_user,create_company,vac_days;
@@ -66,12 +86,7 @@ ImageView comname,pinkish,purple,green;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_config, container, false);
-        if(criteriaFactors!=null) {
-            criteriaFactors.add(new Criteria(criteriaFactors.size() + 1,CEO));
-            criteriaFactors.add(new Criteria(criteriaFactors.size() + 1,managers));
-            criteriaFactors.add(new Criteria(criteriaFactors.size() + 1,member));
 
-        }
         pinkish =view.findViewById(R.id.pinkish);
         green =view.findViewById(R.id.green);
         purple =view.findViewById(R.id.purple);
@@ -80,12 +95,14 @@ ImageView comname,pinkish,purple,green;
         company_details = view.findViewById(R.id.companytv);
         compname_tv = view.findViewById(R.id.compname_tv);
         companyLevel_card =view.findViewById(R.id.levelcv);
+        createCompany =view.findViewById(R.id.create_card);
         complevel_tv = view.findViewById(R.id.complevel_tv);
         editTexts = new ArrayList<>();
         scores = new ArrayList<>();
         criteria_card = view.findViewById(R.id.criteria_card);
         ranking_criteria = view.findViewById(R.id.ranking_criteria);
 //        add_user = view.findViewById(R.id.add_user);
+
         create_company= view.findViewById(R.id.create_company);
         vac_days = view.findViewById(R.id.vac_days);
         Typeface typeface =Typeface.createFromAsset(getActivity().getAssets(),"fonts/futura.ttf");
@@ -99,6 +116,40 @@ ImageView comname,pinkish,purple,green;
         myDialog = new Dialog(getActivity());
 
         company_name = view.findViewById(R.id.companycv);
+        createCompany.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                api = RetrofitClient.getClient().create(ApiService.class);
+                Company company = new Company(companyName,max_sick,max_vac,max_home,levels,criteriaFactors);
+                Call<Company>companyCall = api.addcompany(company);
+//                Toast.makeText(getContext(),companyName+" "+String.valueOf(max_sick)+" "+String.valueOf(max_vac)+" "+String.valueOf(max_home),Toast.LENGTH_LONG).show();
+//                for (int i = 0; i <levels.size() ; i++) {
+//                    Toast.makeText(getContext(),levels.get(i).getLevel_name()+" "+levels.get(i).getLevel_number(),Toast.LENGTH_LONG).show();
+//
+//                }
+//                for (int i = 0; i <criteriaFactors.size() ; i++) {
+//                    Toast.makeText(getContext(),criteriaFactors.get(i).getName()+" "+criteriaFactors.get(i).getWeight(),Toast.LENGTH_LONG).show();
+//
+//                }
+                //
+ companyCall.enqueue(new Callback<Company>() {
+                    @Override
+                    public void onResponse(Call<Company> call, Response<Company> response) {
+//                        Toast.makeText(getContext(),"Message "+bodyToString(call.request())+ " error: "+response.errorBody().toString(),Toast.LENGTH_LONG).show();
+                        Log.d(TAG, bodyToString(call.request()));
+                        if(response.isSuccessful())
+                            Toast.makeText(getContext(),"SUCCESS",Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Company> call, Throwable t) {
+                            t.getMessage();
+
+                    }
+                });
+
+            }
+        });
         criteria_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,7 +184,7 @@ ImageView comname,pinkish,purple,green;
     }
 
 public void showPopupCompanyName(){
-    TextView company_name ;
+    final TextView company_name ;
     final EditText companyet;
 
     Button done ;
@@ -154,6 +205,7 @@ public void showPopupCompanyName(){
         @Override
         public void onClick(View v) {
             comname.setAlpha(100);
+            companyName =companyet.getText().toString();
             compname_tv.setText(companyet.getText().toString());
             myDialog.dismiss();
         }
@@ -228,6 +280,7 @@ public void showPopupCompanyName(){
                     Toast.makeText(getContext(),Integer.toString(drop.getId()),Toast.LENGTH_SHORT).show();
                     PopupMenu popupMenu = new PopupMenu(myDialog.getContext(),drop);
                     popupMenu.getMenuInflater().inflate(R.menu.popupmenu,popupMenu.getMenu());
+
                     popupMenu.show();
                     popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                         @Override
@@ -257,7 +310,8 @@ public void showPopupCompanyName(){
         public void onClick(View v) {
             for (int i = 0; i <levelObjects.size() ; i++) {
                 Toast.makeText(getContext(),levelObjects.get(i).getLevel_name().getText().toString()+" "+levelObjects.get(i).getLevel_no().getText().toString(),Toast.LENGTH_SHORT).show();
-//                levels.add(new Level(Integer.parseInt(levelObjects.get(i).getLevel_name().getText().toString()),levelObjects.get(i).getLevel_name().getText().toString()));
+                Level level = new Level(levelObjects.get(i).getLevel_name().getText().toString(),Integer.parseInt(levelObjects.get(i).getLevel_no().getText().toString()));
+               levels.add(level);
 
             }
             pinkish.setAlpha(100);
@@ -270,12 +324,13 @@ public void showPopupCompanyName(){
     public void showPopupVacationDays(){
 
     Button done;
-    final Button editvac,edit2,edit3;
-    final TextView textViewvac,home_tv,sick_days;
-    final EditText editvacation,editsick,edithome;
+
+
+
        final ViewSwitcher viewSwitcher;
        final ViewSwitcher viewSwitchersick;
        final ViewSwitcher viewSwitcherHome;
+
         myDialog.setContentView(R.layout.popup_vacation);
         viewSwitcher = myDialog.findViewById(R.id.vac_num);
         viewSwitchersick =myDialog.findViewById(R.id.sick_num);
@@ -289,7 +344,11 @@ public void showPopupCompanyName(){
         edit3 = myDialog.findViewById(R.id.edit3);
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
     editvac = myDialog.findViewById(R.id.editvac);
+        done = myDialog.findViewById(R.id.done_vac);
 
+      textViewvac.setText(String.valueOf(max_vac));
+      sick_days.setText(String.valueOf(max_sick));
+      home_tv.setText(String.valueOf(max_home));
     edit2 = myDialog.findViewById(R.id.edit2);
     edit3.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -297,10 +356,15 @@ public void showPopupCompanyName(){
             if(edit3.getText().equals("Edit")){
                 viewSwitcherHome.showNext();
                 edit3.setText("Done");
+
             }
             else {
+
                 home_tv.setText(edithome.getText().toString());
+
                 edit3.setText("Edit");
+                max_home = Integer.parseInt(edithome.getText().toString());
+
                 viewSwitcherHome.showPrevious();
             }
         }
@@ -316,6 +380,7 @@ public void showPopupCompanyName(){
             else {
                 sick_days.setText(editsick.getText().toString());
                 edit2.setText("Edit");
+                max_sick = Integer.parseInt(editsick.getText().toString());
                 viewSwitchersick.showPrevious();
             }
         }
@@ -326,10 +391,12 @@ public void showPopupCompanyName(){
             if(editvac.getText().equals("Edit")){
                 viewSwitcher.showNext();
                 editvac.setText("Done");
+
             }
             else {
                 textViewvac.setText(editvacation.getText().toString());
                 editvac.setText("Edit");
+                max_vac = Integer.parseInt(editvacation.getText().toString());
                 viewSwitcher.showPrevious();
             }
 
@@ -337,11 +404,25 @@ public void showPopupCompanyName(){
 
         }
     });
-        done = myDialog.findViewById(R.id.done_vac);
+
 
     done.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+              textViewvac.setText(String.valueOf(max_vac));
+              sick_days.setText(String.valueOf(max_sick));
+              home_tv.setText(String.valueOf(max_home));
+
+              //Todo Max_vac is the maximum number of vacation,max_sick is the maximum number of sick leaves,max_home..
+//                String home = home_tv.getText().toString().replace("^\"|\"$", "");
+//                String sick = sick_days.getText().toString().replace("^\"|\"$", "");
+//                String vac = textViewvac.getText().toString().replace("^\"|\"$", "");
+
+//           max_home = Integer.valueOf(home_tv.getText().toString());
+//          max_sick = Integer.valueOf(sick_days.getText().toString());
+//         max_vac = Integer.valueOf(textViewvac.getText().toString());
+
+//                Toast.makeText(getContext(),String.valueOf(home.length())+" "+String.valueOf(sick.length())+" " +String.valueOf(vac.length()),Toast.LENGTH_LONG).show();
             green.setAlpha(100);
             myDialog.dismiss();
 
@@ -354,7 +435,7 @@ myDialog.show();
         final LinearLayout addview;
         final EditText edit_criteria ,editscore;
         final ArrayList<Level> criteriaLevels;
-        final ArrayList<CriteriaObject> criteriaObjects;
+
         ImageButton add;
         criteriaLevels = new ArrayList<>();
         criteriaObjects = new ArrayList<>();
@@ -389,16 +470,44 @@ myDialog.show();
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getContext(),"dd",Toast.LENGTH_LONG).show();
 
                 for (int i = 0; i <criteriaObjects.size() ; i++) {
-                    Toast.makeText(getContext(),criteriaObjects.get(i).getCriteria_name().getText().toString(),Toast.LENGTH_LONG).show();
-                   Criteria criteria = new Criteria(Integer.parseInt(criteriaObjects.get(i).getCriteria_number().getText().toString()),criteriaObjects.get(i).getCriteria_name().getText().toString());
+                   Criteria criteria = new Criteria(criteriaObjects.get(i).getCriteria_name().getText().toString(),"Homos",Float.valueOf(criteriaObjects.get(i).getCriteria_number().getText().toString()));
                     criteriaFactors.add(criteria);
-                }
+                    for (int j = 0; j <criteriaFactors.size() ; j++) {
+                        Toast.makeText(getContext(),criteriaFactors.get(i).getName(),Toast.LENGTH_LONG).show();
+
+                    }
+                        validateScore(criteriaFactors);
+                    }
                 purple.setAlpha(100);
                 myDialog.dismiss();
             }
         });
     myDialog.show();
     }
+public boolean validateScore(ArrayList<Criteria> criteriaFactors){
+    double sumScore =0;
+    for (int j = 0; j <criteriaFactors.size() ; j++) {
+        sumScore += criteriaFactors.get(j).getWeight();
+    }
+        if(sumScore>1){
+        return false;
+        }
+return true;
+    }
+    private static String bodyToString(final Request request){
+
+        try {
+            final Request copy = request.newBuilder().build();
+            final Buffer buffer = new Buffer();
+            copy.body().writeTo(buffer);
+            return buffer.readUtf8();
+        } catch (final IOException e) {
+            return "did not work";
+        }
+    }
+
+
 }

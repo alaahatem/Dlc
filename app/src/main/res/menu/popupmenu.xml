@@ -5,10 +5,6 @@
     >
 
     <item
-        android:id="@+id/itemOne"
-        android:title="1">
-    </item>
-    <item
         android:id="@+id/itemTwo"
         android:title="2">
 

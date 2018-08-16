@@ -8,12 +8,14 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,10 +28,12 @@ import android.widget.Toast;
 
 import com.dlc.hr_module.ApiService;
 import com.dlc.hr_module.Models.User;
+import com.dlc.hr_module.Models.UserRequest;
 import com.dlc.hr_module.R;
 import com.dlc.hr_module.RetrofitClient;
 import com.dlc.hr_module.TinyDB;
 
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -160,10 +164,11 @@ public class Sign_up extends Fragment {
             @Override
             public void onClick(View v) {
                 User user = new User(nameet.getText().toString(),emailet.getText().toString(),passet.getText().toString());
+                UserRequest userRequest = new UserRequest(user);
                     progressBar.setVisibility(View.VISIBLE);
-                SendNetworkRequest(user);
-                next.setEnabled(false);
-                next.setTextColor(Color.GRAY);
+                    SendNetworkRequest(userRequest);
+
+
             }
         });
 
@@ -172,12 +177,13 @@ public class Sign_up extends Fragment {
 
 
     }
-    public void SendNetworkRequest(User user){
+    public void SendNetworkRequest(UserRequest user){
         api = RetrofitClient.getClient().create(ApiService.class);
-        Call<User> userCall = api.signup(user);
-        userCall.enqueue(new Callback<User>() {
+        Call<UserRequest> userCall = api.signup(user);
+
+        userCall.enqueue(new Callback<UserRequest>() {
             @Override
-            public void onResponse( Call<User> call, Response<User> response) {
+            public void onResponse( Call<UserRequest> call, Response<UserRequest> response) {
                 if(response.isSuccessful()) {
 
                     TinyDB tinyDB = new TinyDB(getContext());
@@ -190,11 +196,21 @@ public class Sign_up extends Fragment {
                     fragmentTransaction.replace(R.id.fragment_pos,frag);
                     fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();
+                Toast.makeText(getContext(),response.message()+" "+response.body(),Toast.LENGTH_LONG).show();
                 }
+                else
+                {
+                    try {
+                        Log.i("signup_error",response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                Toast.makeText(getContext(),response.message()+" "+response.body(),Toast.LENGTH_LONG).show();
             }
 
             @Override
-            public void onFailure( Call<User> call, Throwable t) {
+            public void onFailure( Call<UserRequest> call, Throwable t) {
                 Toast.makeText(getContext(),t.getMessage(),Toast.LENGTH_LONG).show();
                 next.setEnabled(true);
                 progressBar.setVisibility(View.GONE);

@@ -298,6 +298,7 @@
         <!--</android.support.v7.widget.CardView>-->
         <!-- Column 2-->
         <android.support.v7.widget.CardView
+            android:id="@+id/create_card"
             android:layout_height="0dp"
             android:layout_width="0dp"
 
@@ -307,9 +308,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             app:cardElevation="0dp"
-            app:cardCornerRadius="8dp"
-
-            >
+            app:cardCornerRadius="8dp">
             <RelativeLayout
                 android:background="@android:color/white"
                 android:layout_width="wrap_content"
@@ -319,17 +318,20 @@
                 android:layout_gravity="center_horizontal|center_vertical">
 
 
+                <ImageView
+                    android:id="@+id/green_create"
+                    android:src="@drawable/green"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
                 <TextView
                     android:id="@+id/create_company"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textColor="#f76a9c"
-                    android:gravity="center_horizontal"
-                    tools:text="CREATE
-COMPANY!"
-
-
+                    android:layout_width="79sp"
+                    android:layout_height="46sp"
+                    android:textColor="@android:color/white"
+                    android:text="@string/create_company"
+                    android:layout_centerInParent="true"
+                    android:textSize="13sp"
                     />
 
             </RelativeLayout>

@@ -75,12 +75,14 @@
                     android:textSize="51sp"
 
                     android:onClick="TextviewClicked"
-                    android:text="21"
+
                     android:textColor="@android:color/white" />
                     <EditText
                         android:id="@+id/editvacation"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        />
                 </ViewSwitcher>
 
                 <TextView
@@ -127,13 +129,15 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5sp"
-                    android:text="9"
+
                     android:textColor="@android:color/white"
                     android:textSize="51sp" />
                     <EditText
                         android:id="@+id/editsick"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        />
                 </ViewSwitcher>
                 <TextView
                     android:id="@+id/secondtv"
@@ -172,7 +176,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                     android:textSize="51sp"
-                    android:text="21"
+
                     android:layout_centerHorizontal="true"
                     android:textColor="@android:color/white"
                     android:layout_marginTop="5sp"
@@ -180,8 +184,10 @@
                     android:id="@+id/hometv" />
                     <EditText
                         android:id="@+id/edithome"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        />
                 </ViewSwitcher>
                 <TextView
                     android:id="@+id/thirdview"

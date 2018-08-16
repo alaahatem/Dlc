@@ -11,9 +11,7 @@ import java.util.Date;
  */
 
 public class User {
-    @SerializedName("token")
-    @Expose
-    private String token ;
+
    @SerializedName("name")
    @Expose
     private String name;
@@ -54,14 +52,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 
     public Integer getCompany_id() {

@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
  */
 
     public class Level {
-    @SerializedName("level_number")
+    @SerializedName("level_no")
     @Expose
     private Integer level_number;
 
@@ -16,7 +16,7 @@ import com.google.gson.annotations.SerializedName;
     @Expose
     private String level_name;
 
-    public Level(Integer level_number, String level_name) {
+    public Level(String level_name,Integer level_number) {
         this.level_number = level_number;
         this.level_name = level_name;
     }

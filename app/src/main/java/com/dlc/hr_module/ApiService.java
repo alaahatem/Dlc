@@ -3,6 +3,7 @@ package com.dlc.hr_module;
 import com.dlc.hr_module.Models.Company;
 import com.dlc.hr_module.Models.Criteria;
 import com.dlc.hr_module.Models.Level;
+import com.dlc.hr_module.Models.UserRequest;
 import com.dlc.hr_module.Models.User;
 
 import java.net.URI;
@@ -13,7 +14,6 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 
@@ -22,17 +22,12 @@ import retrofit2.http.PUT;
  */
 
 public interface ApiService {
-    @POST("signup/config/{company_name}")
+    @POST("signup/config/")
 
-    Call<Company> addcompany(@Field("company_name") String title,
-                           @Field("level")ArrayList<Level> levels,
-                           @Field("max_sick") int max_sick,
-                           @Field("max_vac")int max_vac,
-                           @Field("max_home")int max_home,
-                           @Field("criteria")ArrayList<Criteria> criteria);
+    Call<Company> addcompany(@Body Company company);
     @POST("signup/personal/")
 
-    Call<User>signup(@Body User user);
+    Call<UserRequest>signup(@Body UserRequest user);
 
     @PUT("signup/personal/{user_id}")
     @FormUrlEncoded

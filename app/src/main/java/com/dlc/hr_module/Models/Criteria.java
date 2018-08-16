@@ -8,17 +8,30 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class Criteria {
-    @SerializedName("criteria_name")
+    @SerializedName("crit_name")
     @Expose
     private String name ;
-    @SerializedName("criteria_weight")
+    @SerializedName("weight")
     @Expose
     private float weight;
+    @SerializedName("descrip")
+    @Expose
+    private String description;
 
-    public Criteria(float weight, String name) {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Criteria(String name,  String description,float weight) {
         this.name = name;
         this.weight = weight;
+        this.description = description;
     }
+
 
     public String getName() {
         return name;
