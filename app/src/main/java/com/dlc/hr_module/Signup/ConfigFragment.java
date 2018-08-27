@@ -2,6 +2,7 @@ package com.dlc.hr_module.Signup;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -9,6 +10,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -38,6 +40,8 @@ import com.dlc.hr_module.Models.Level;
 import com.dlc.hr_module.Models.LevelObject;
 import com.dlc.hr_module.R;
 import com.dlc.hr_module.RetrofitClient;
+import com.dlc.hr_module.Users.Users;
+import com.dlc.hr_module.Users.UsersFragment;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -137,8 +141,12 @@ ImageView comname,pinkish,purple,green;
                     public void onResponse(Call<Company> call, Response<Company> response) {
 //                        Toast.makeText(getContext(),"Message "+bodyToString(call.request())+ " error: "+response.errorBody().toString(),Toast.LENGTH_LONG).show();
                         Log.d(TAG, bodyToString(call.request()));
-                        if(response.isSuccessful())
-                            Toast.makeText(getContext(),"SUCCESS",Toast.LENGTH_LONG).show();
+                        if(response.isSuccessful()){
+                            Intent intent = new Intent(getContext(),Users.class);
+                            startActivity(intent);
+                        }
+
+
                     }
 
                     @Override

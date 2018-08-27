@@ -1,0 +1,140 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.dlc.hr_module.Users.UsersFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="158dp"
+
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="84sp"
+            android:layout_height="41sp"
+            android:layout_marginLeft="31sp"
+            android:layout_marginTop="3sp"
+            android:text="Users"
+            android:textColor="@color/signup"
+            android:textSize="32sp"
+
+            />
+
+        <LinearLayout
+            android:layout_width="295dp"
+            android:layout_height="37dp"
+            android:layout_marginLeft="33dp"
+            android:layout_marginTop="15sp"
+            android:orientation="horizontal">
+
+
+            <EditText
+                android:id="@+id/searchet"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="85"
+                android:background="@drawable/edittextbackground"
+
+                android:hint="search for users" />
+
+            <ImageView
+                android:id="@+id/searchIcon"
+                android:layout_width="0sp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:background="@color/signup"
+                android:src="@drawable/ic_search_black_24dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        
+
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+
+        android:background="@color/teams"
+        >
+        <TextView
+            android:background="@drawable/white_borders"
+            android:layout_width="55sp"
+            android:layout_height="25sp"
+            android:layout_marginLeft="32sp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:layout_gravity="center_vertical"
+            android:text="Android"
+            android:textColor="@android:color/white"
+
+            />
+        <TextView
+            android:layout_width="55sp"
+            android:layout_height="25sp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5sp"
+            android:text="Backend"
+            android:background="@drawable/white_borders"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:textSize="12sp"
+            />
+        <TextView
+            android:background="@drawable/white_borders"
+            android:textColor="@android:color/white"
+            android:layout_width="55sp"
+            android:layout_height="25sp"
+            android:layout_marginLeft="5sp"
+            android:gravity="center"
+            android:text="IOS"
+            android:layout_gravity="center_vertical"
+            android:textSize="12sp"
+            />
+
+        <TextView
+            android:layout_width="55dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="5sp"
+            android:text="Frontend"
+            android:textSize="12sp"
+            android:background="@drawable/white_borders"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            />
+        <TextView
+            android:layout_width="63sp"
+            android:layout_height="25sp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5sp"
+            android:text="Marketing"
+            android:background="@drawable/white_borders"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:textSize="12sp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="440dp"
+        >
+
+        <GridView
+            android:id="@+id/usersgrid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnWidth="90dp"
+            android:gravity="center"
+            android:horizontalSpacing="10dp"
+            android:numColumns="auto_fit"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp">
+
+        </GridView>
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
