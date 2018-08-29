@@ -1,24 +1,17 @@
 package com.dlc.hr_module.Signup;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -26,13 +19,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.dlc.hr_module.Adapters.LevelAdapter;
 import com.dlc.hr_module.ApiService;
+import com.dlc.hr_module.HomePage.Home;
 import com.dlc.hr_module.Models.Company;
 import com.dlc.hr_module.Models.Criteria;
 import com.dlc.hr_module.Models.CriteriaObject;
@@ -40,8 +33,7 @@ import com.dlc.hr_module.Models.Level;
 import com.dlc.hr_module.Models.LevelObject;
 import com.dlc.hr_module.R;
 import com.dlc.hr_module.RetrofitClient;
-import com.dlc.hr_module.Users.Users;
-import com.dlc.hr_module.Users.UsersFragment;
+import com.dlc.hr_module.Users.UsersActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -51,7 +43,6 @@ import okio.Buffer;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 
 public class ConfigFragment extends Fragment {
@@ -142,7 +133,7 @@ ImageView comname,pinkish,purple,green;
 //                        Toast.makeText(getContext(),"Message "+bodyToString(call.request())+ " error: "+response.errorBody().toString(),Toast.LENGTH_LONG).show();
                         Log.d(TAG, bodyToString(call.request()));
                         if(response.isSuccessful()){
-                            Intent intent = new Intent(getContext(),Users.class);
+                            Intent intent = new Intent(getContext(),Home.class);
                             startActivity(intent);
                         }
 

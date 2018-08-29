@@ -9,5 +9,9 @@
     <color name="criteria">#cfbed5</color>
     <color name="pink">#ffc3c9</color>
     <color name="teams">#4a4a4a</color>
+    <color name="points">#63caca</color>
+    <color name="vacation">#f28e9c</color>
+    <color name="personal">#f9c660</color>
+    <color name="working_hours">#4c90df</color>
 </resources>
 

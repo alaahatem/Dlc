@@ -28,7 +28,7 @@ import retrofit2.http.Query;
 
 public interface ApiService {
     @GET("companies/1/working_hours.json")
-    Call<WorkingHours> getWorkingHours(@Query("orient")String records,@Query("start_date") String start_date);
+    Call<List<WorkingHours>> getWorkingHours(@Query("orient")String records,@Query("start_date") String start_date);
     @GET("users")
     Call<List<UserSearch>>getAllUsers();
 

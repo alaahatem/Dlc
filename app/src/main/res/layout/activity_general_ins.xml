@@ -6,17 +6,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.dlc.hr_module.GeneralInsights.GeneralInsActivity">
-<Button
-    android:id="@+id/datebutton"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Open Date Picker"
-    />
-
-    <TextView
-        android:id="@+id/dataview"
+    <ImageButton
+        android:id="@+id/datebutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="data"
+
+        android:src="@drawable/ic_arrow_drop_down_black_24dp"
         />
+
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/line_chart"
+        ></com.github.mikephil.charting.charts.LineChart>
 </LinearLayout>

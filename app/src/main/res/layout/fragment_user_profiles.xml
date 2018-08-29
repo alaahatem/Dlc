@@ -1,0 +1,208 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.dlc.hr_module.Users.UserProfilesFragment">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="179.3dp">
+    <ImageView
+        android:id="@+id/MyImage"
+        android:layout_width="82.7dp"
+        android:layout_height="75.3dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/noimage"
+        />
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/MyImage"
+        android:layout_centerHorizontal="true"
+        android:textSize="16.7sp"
+        android:textStyle="bold"
+        android:text="Alaa Kurdi"
+        />
+
+    <TextView
+        android:id="@+id/textTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textName"
+        android:layout_centerHorizontal="true"
+        android:textSize="14.3sp"
+        android:text="Android Developer"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textTeam"
+        android:layout_centerHorizontal="true"
+        android:textSize="13.7sp"
+        android:text="Intern"
+        />
+
+</RelativeLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="2"
+        android:columnCount="2"
+        android:layout_weight="8"
+        android:alignmentMode="alignMargins"
+        android:columnOrderPreserved="false"
+        android:padding="10dp"
+        >
+<android.support.v7.widget.CardView
+    android:layout_width="0sp"
+    android:layout_height="130sp"
+    android:layout_columnWeight="1"
+    android:layout_rowWeight="1"
+    android:layout_marginRight="10sp"
+    android:background="@color/points"
+    >
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="25sp"
+        android:layout_gravity="bottom"
+        android:textSize="10sp"
+        android:background="@android:color/white"
+        android:text="See Details"
+        android:textColor="@color/points"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="25sp"
+        android:gravity="center"
+        android:orientation="vertical"
+
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:text="20"
+            android:textColor="@android:color/white"
+
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Total Points"
+            android:textColor="@android:color/white"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_width="0sp"
+            android:layout_height="130sp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_marginLeft="10sp"
+            android:background="@color/vacation"
+            >
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="25sp"
+                android:layout_gravity="bottom"
+                android:textSize="10sp"
+                android:background="@android:color/white"
+                android:text="See Details"
+                android:textColor="@color/vacation"
+                />
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_width="0sp"
+            android:layout_height="130sp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_marginRight="10sp"
+            android:layout_marginTop="20sp"
+            android:background="@color/personal"
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="25sp"
+                >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="PERSONAL INFO"
+                android:textStyle="bold"
+
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:layout_gravity="center"
+                />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="25sp"
+                android:layout_gravity="bottom"
+                android:text="See Details"
+                android:textSize="10sp"
+                android:background="@android:color/white"
+                android:textColor="@color/personal"
+                />
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_width="0sp"
+            android:layout_height="153sp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="20sp"
+            android:background="@color/working_hours"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="25sp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:text="WORKING HOURS"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    />
+
+            </LinearLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="25sp"
+                android:layout_gravity="bottom"
+                android:textSize="10sp"
+                android:background="@android:color/white"
+                android:text="See Details"
+                android:textColor="@color/working_hours"
+                />
+        </android.support.v7.widget.CardView>
+    </GridLayout>
+</LinearLayout>
+
+</LinearLayout>

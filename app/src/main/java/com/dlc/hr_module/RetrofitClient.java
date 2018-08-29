@@ -37,7 +37,7 @@ public class RetrofitClient {
         httpClient.addInterceptor(logging);
         if (retrofit==null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
+                    .baseUrl(BASE_URL_ANALYSIS)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }

@@ -29,16 +29,17 @@ import retrofit2.Response;
 public class UsersAdapter extends BaseAdapter{
     private Context context;
     private String searchText;
+    List<UserSearch>allUsers;
     ApiService api;
 
-    public UsersAdapter(Context context, String searchText) {
+    public UsersAdapter(Context context, List<UserSearch>allUsers) {
         this.context = context;
-        this.searchText = searchText;
+        this.allUsers = allUsers;
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return allUsers.size();
     }
 
     @Override
@@ -53,8 +54,7 @@ public class UsersAdapter extends BaseAdapter{
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        final TextView UserNametv;
-        final TextView UserTeamtv;
+
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View gridView;
@@ -64,28 +64,15 @@ public class UsersAdapter extends BaseAdapter{
 
             gridView = inflater.inflate(R.layout.user_row,null);
             ImageView imageView = gridView.findViewById(R.id.UserImage);
-            UserNametv = gridView.findViewById(R.id.UserName);
-            UserTeamtv = gridView.findViewById(R.id.UserTeam);
-            final TextView UserPositiontv= gridView.findViewById(R.id.UserPosition);
-            api = RetrofitClient.getClient().create(ApiService.class);
-            Call<List<UserSearch>> userSearchCall = api.getAllUsers();
-            userSearchCall.enqueue(new Callback<List<UserSearch>>() {
-                @Override
-                public void onResponse(Call<List<UserSearch>> call, Response<List<UserSearch>> response) {
-                    if(response.isSuccessful()){
-                      List<UserSearch> userSearches = response.body();
-                      UserNametv.setText(userSearches.get(position).getName());
-                      UserTeamtv.setText(userSearches.get(position).getTeam());
-                      UserPositiontv.setText(userSearches.get(position).getPosition());
-                    }
-                }
 
-                @Override
-                public void onFailure(Call<List<UserSearch>> call, Throwable t) {
+            TextView userName= gridView.findViewById(R.id.UserName);
+            TextView userTeam = gridView.findViewById(R.id.UserTeam);
+            TextView userPosition = gridView.findViewById(R.id.UserPosition);
 
-                    Toast.makeText(context,t.getMessage(),Toast.LENGTH_LONG).show();
-                }
-            });
+            userName.setText(allUsers.get(position).getName());
+               userTeam.setText(allUsers.get(position).getTeam());
+          userPosition.setText(allUsers.get(position).getPosition());
+
 
         }
         else
