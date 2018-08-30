@@ -42,8 +42,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Sign_up extends Fragment {
-    TextView nametv ,emailtv,passtv,verifypasstv,signuptv;
-    EditText nameet,emailet,passet,verifypasset;
+    TextView nametv, emailtv, passtv, verifypasstv, signuptv;
+    EditText nameet, emailet, passet, verifypasset;
     Button next;
     ApiService api;
     ProgressBar progressBar;
@@ -52,19 +52,19 @@ public class Sign_up extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_sign_up,container,false);
+        View view = inflater.inflate(R.layout.fragment_sign_up, container, false);
         nametv = view.findViewById(R.id.nametv);
-        emailtv= view.findViewById(R.id.emailtv);
+        emailtv = view.findViewById(R.id.emailtv);
         passtv = view.findViewById(R.id.passtv);
         verifypasstv = view.findViewById(R.id.vpasstv);
         signuptv = view.findViewById(R.id.signuptv);
         next = view.findViewById(R.id.next);
         nameet = view.findViewById(R.id.nameet);
         emailet = view.findViewById(R.id.emailet);
-        passet = view.findViewById(R.id.passet) ;
-        verifypasset= view.findViewById(R.id.vpasset);
+        passet = view.findViewById(R.id.passet);
+        verifypasset = view.findViewById(R.id.vpasset);
         progressBar = view.findViewById(R.id.progress_loader);
-        Typeface typeface =Typeface.createFromAsset(getActivity().getAssets(),"fonts/futura.ttf");
+        Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/futura.ttf");
         nametv.setTypeface(typeface);
         emailtv.setTypeface(typeface);
         passtv.setTypeface(typeface);
@@ -81,11 +81,11 @@ public class Sign_up extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
 
-                        if(nameet.getText() .toString().length()<3)
-                            nametv.setTextColor(Color.RED);
-                        else{
-                            nametv.setTextColor(getResources().getColor(R.color.signup));
-                        }
+                if (nameet.getText().toString().length() < 3)
+                    nametv.setTextColor(Color.RED);
+                else {
+                    nametv.setTextColor(getResources().getColor(R.color.signup));
+                }
             }
 
             @Override
@@ -101,12 +101,11 @@ public class Sign_up extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(!isValidEmail(emailet.getText().toString()))
+                if (!isValidEmail(emailet.getText().toString()))
                     emailtv.setTextColor(Color.RED);
-                    else
-                        emailtv.setTextColor(getResources().getColor(R.color.signup));
+                else
+                    emailtv.setTextColor(getResources().getColor(R.color.signup));
             }
-
 
 
             @Override
@@ -122,17 +121,14 @@ public class Sign_up extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(passet.getText().toString().isEmpty()){
+                if (passet.getText().toString().isEmpty()) {
                     passtv.setTextColor(Color.RED);
-                }
-
-                else if (passet.getText().toString().length()>0 &&passet.getText().toString().length()<5){
+                } else if (passet.getText().toString().length() > 0 && passet.getText().toString().length() < 5) {
                     passtv.setTextColor(Color.YELLOW);
-                }
-                else if (passet.getText().toString().length()>4 && passet.getText().toString().length()<9)
+                } else if (passet.getText().toString().length() > 4 && passet.getText().toString().length() < 9)
                     passtv.setTextColor(getResources().getColor(R.color.light_green));
-                    else
-                        passtv.setTextColor(getResources().getColor(R.color.dark_green));
+                else
+                    passtv.setTextColor(getResources().getColor(R.color.dark_green));
             }
 
             @Override
@@ -148,7 +144,7 @@ public class Sign_up extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(!verifypasset.getText().toString().equals(passet.getText().toString())){
+                if (!verifypasset.getText().toString().equals(passet.getText().toString())) {
                     verifypasstv.setTextColor(Color.RED);
                 }
             }
@@ -163,10 +159,10 @@ public class Sign_up extends Fragment {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User user = new User(nameet.getText().toString(),emailet.getText().toString(),passet.getText().toString());
+                User user = new User(nameet.getText().toString(), emailet.getText().toString(), passet.getText().toString());
                 UserRequest userRequest = new UserRequest(user);
-                    progressBar.setVisibility(View.VISIBLE);
-                    SendNetworkRequest(userRequest);
+                progressBar.setVisibility(View.VISIBLE);
+                SendNetworkRequest(userRequest);
 
 
             }
@@ -177,41 +173,40 @@ public class Sign_up extends Fragment {
 
 
     }
-    public void SendNetworkRequest(UserRequest user){
+
+    public void SendNetworkRequest(UserRequest user) {
         api = RetrofitClient.getClient().create(ApiService.class);
         Call<UserRequest> userCall = api.signup(user);
 
         userCall.enqueue(new Callback<UserRequest>() {
             @Override
-            public void onResponse( Call<UserRequest> call, Response<UserRequest> response) {
-                if(response.isSuccessful()) {
+            public void onResponse(Call<UserRequest> call, Response<UserRequest> response) {
+                if (response.isSuccessful()) {
 
                     TinyDB tinyDB = new TinyDB(getContext());
                     if (response.body().getToken() != null)
                         tinyDB.putString("token", response.body().getToken());
-                        progressBar.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.GONE);
                     ConfigFragment frag = new ConfigFragment();
-                     android.support.v4.app.FragmentManager fm = getActivity().getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction =fm.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_pos,frag);
+                    android.support.v4.app.FragmentManager fm = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragment_pos, frag);
                     fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();
-                Toast.makeText(getContext(),response.message()+" "+response.body(),Toast.LENGTH_LONG).show();
-                }
-                else
-                {
+                    Toast.makeText(getContext(), response.message() + " " + response.body(), Toast.LENGTH_LONG).show();
+                } else {
                     try {
-                        Log.i("signup_error",response.errorBody().string());
+                        Log.i("signup_error", response.errorBody().string());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
-                Toast.makeText(getContext(),response.message()+" "+response.body(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), response.message() + " " + response.body(), Toast.LENGTH_LONG).show();
             }
 
             @Override
-            public void onFailure( Call<UserRequest> call, Throwable t) {
-                Toast.makeText(getContext(),t.getMessage(),Toast.LENGTH_LONG).show();
+            public void onFailure(Call<UserRequest> call, Throwable t) {
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
                 next.setEnabled(true);
                 progressBar.setVisibility(View.GONE);
             }
@@ -221,6 +216,7 @@ public class Sign_up extends Fragment {
     public static boolean isValidEmail(CharSequence target) {
         return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
+
     public static boolean isValidPassword(final String password) {
 
         Pattern pattern;

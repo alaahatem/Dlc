@@ -3,6 +3,7 @@ package com.dlc.hr_module.Users;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.dlc.hr_module.Adapters.UsersAdapter;
 import com.dlc.hr_module.ApiService;
+import com.dlc.hr_module.Constants.Constants;
 import com.dlc.hr_module.Models.User;
 import com.dlc.hr_module.Models.UserSearch;
 import com.dlc.hr_module.R;
@@ -31,13 +33,14 @@ import retrofit2.Response;
 
 
 public class UsersFragment extends Fragment {
-ImageView search;
-EditText searchet;
-UsersAdapter adapter;
-List<UserSearch> AllUsers;
+    ImageView search;
+    EditText searchet;
+    UsersAdapter adapter;
+    List<UserSearch> AllUsers;
     List<UserSearch> filteredUsers;
     ApiService api;
     GridView usersGrid;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,27 +52,35 @@ List<UserSearch> AllUsers;
         search = view.findViewById(R.id.searchIcon);
         searchet = view.findViewById(R.id.searchet);
         api = RetrofitClient.getClient().create(ApiService.class);
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        UsersAdapter adapter = new UsersAdapter(getActivity(), Constants.AllUsers, fragmentManager);
+        usersGrid.setAdapter(adapter);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
         searchet.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                Toast.makeText(getContext(),"before call",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "before call", Toast.LENGTH_SHORT).show();
                 Call<List<UserSearch>> userSearchCall = api.getAllUsers();
                 userSearchCall.enqueue(new Callback<List<UserSearch>>() {
                     @Override
                     public void onResponse(Call<List<UserSearch>> call, Response<List<UserSearch>> response) {
-                        Toast.makeText(getActivity(),call.request().url().toString(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), call.request().url().toString(), Toast.LENGTH_LONG).show();
 
-                        if(response.isSuccessful()){
-                            Toast.makeText(getActivity(),response.body().get(0).getName(),Toast.LENGTH_LONG).show();
+                        if (response.isSuccessful()) {
+                            Toast.makeText(getActivity(), response.body().get(0).getName(), Toast.LENGTH_LONG).show();
                             AllUsers = response.body();
 
-                            UsersAdapter adapter = new UsersAdapter(getActivity(),AllUsers);
-                            usersGrid.setAdapter(adapter);
+//                            UsersAdapter adapter = new UsersAdapter(getActivity(), Constants.AllUsers);
+//                            usersGrid.setAdapter(adapter);
                             usersGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                    Toast.makeText(getContext(),"Clicked",Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getContext(), "Clicked", Toast.LENGTH_LONG).show();
                                 }
                             });
                         }
@@ -78,7 +89,7 @@ List<UserSearch> AllUsers;
                     @Override
                     public void onFailure(Call<List<UserSearch>> call, Throwable t) {
 
-                        Toast.makeText(getContext(),t.getMessage(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -92,10 +103,9 @@ List<UserSearch> AllUsers;
             public void afterTextChanged(Editable s) {
 
 
-
             }
         });
-        return  view;
+        return view;
     }
 
 
@@ -103,12 +113,9 @@ List<UserSearch> AllUsers;
         filteredUsers = new ArrayList<>();
 
 
-        for ( UserSearch item : user) {
+        for (UserSearch item : user) {
             if (item.getName().toLowerCase().contains(text.toLowerCase())) {
                 filteredUsers.add(item);
-
-
-
 
 
             }

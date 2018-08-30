@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.dlc.hr_module.MainActivity;
 import com.dlc.hr_module.Models.Level;
 import com.dlc.hr_module.R;
 
@@ -37,6 +38,7 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull LevelAdapter.ViewHolder holder, int position) {
                 holder.name.setText(levels.get(position).getLevel_name());
+
     }
 
     @Override

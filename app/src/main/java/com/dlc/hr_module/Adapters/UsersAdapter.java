@@ -1,6 +1,8 @@
 package com.dlc.hr_module.Adapters;
 
 import android.content.Context;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +13,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dlc.hr_module.ApiService;
+import com.dlc.hr_module.Constants.Constants;
 import com.dlc.hr_module.Models.User;
 import com.dlc.hr_module.Models.UserSearch;
 import com.dlc.hr_module.R;
 import com.dlc.hr_module.RetrofitClient;
+import com.dlc.hr_module.Users.PersonalInfoFragment;
+import com.dlc.hr_module.Users.UserProfilesFragment;
+import com.dlc.hr_module.Users.UsersFragment;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -29,17 +36,20 @@ import retrofit2.Response;
 public class UsersAdapter extends BaseAdapter{
     private Context context;
     private String searchText;
-    List<UserSearch>allUsers;
+    List<User>allUsers;
     ApiService api;
+    FragmentManager fm ;
 
-    public UsersAdapter(Context context, List<UserSearch>allUsers) {
+
+    public UsersAdapter(Context context, List<User>allUser,FragmentManager fm) {
         this.context = context;
-        this.allUsers = allUsers;
+        this.allUsers = allUser;
+        this.fm = fm;
     }
 
     @Override
     public int getCount() {
-        return allUsers.size();
+        return Constants.AllUsers.size();
     }
 
     @Override
@@ -62,6 +72,7 @@ public class UsersAdapter extends BaseAdapter{
         if(convertView==null){
             gridView = new View(context);
 
+
             gridView = inflater.inflate(R.layout.user_row,null);
             ImageView imageView = gridView.findViewById(R.id.UserImage);
 
@@ -72,7 +83,17 @@ public class UsersAdapter extends BaseAdapter{
             userName.setText(allUsers.get(position).getName());
                userTeam.setText(allUsers.get(position).getTeam());
           userPosition.setText(allUsers.get(position).getPosition());
-
+          if(allUsers.get(position).getUser_image().isEmpty()){
+              Picasso.get().load(R.drawable.user).fit().into(imageView);
+          }else{
+              Picasso.get().load(allUsers.get(position).getUser_image()).fit().into(imageView);
+          }
+        gridView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+          fm.beginTransaction().replace(R.id.userfragment,new UsersFragment()).commit();
+            }
+        });
 
         }
         else

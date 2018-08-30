@@ -23,7 +23,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent GeneralIns  = new Intent(getApplicationContext(), GeneralInsActivity.class);
+                Intent GeneralIns  = new Intent(Home.this, GeneralInsActivity.class);
                 startActivity(GeneralIns);
 
             }

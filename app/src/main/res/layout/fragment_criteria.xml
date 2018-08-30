@@ -1,10 +1,9 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.dlc.hr_module.Users.PersonalInfoFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.dlc.hr_module.Users.CriteriaFragment">
 
 
     <LinearLayout
@@ -19,7 +18,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            app:cardBackgroundColor="@color/personal"
+            app:cardBackgroundColor="@color/points"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,38 +35,37 @@
                     android:layout_marginEnd="150.7dp"
                     android:layout_marginStart="32dp"
                     android:layout_marginTop="8dp"
-                    android:text="Personal Info"
+                    android:text="Total"
                     android:textColor="@android:color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
 
-                    app:layout_constraintHorizontal_bias="0.168"
+                    app:layout_constraintHorizontal_bias="0.104"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.174" />
+                    app:layout_constraintVertical_bias="0.172" />
 
                 <TextView
                     android:id="@+id/user_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="208dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
 
                     android:layout_marginTop="16dp"
-                    android:text="Email"
+                    android:text="Communication"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"
 
-                    app:layout_constraintHorizontal_bias="0.139"
-                    app:layout_constraintStart_toStartOf="@id/personal_info"
                     app:layout_constraintEnd_toEndOf="@id/personal_info"
+                    app:layout_constraintHorizontal_bias="0.45"
+                    app:layout_constraintStart_toStartOf="@id/personal_info"
                     app:layout_constraintTop_toBottomOf="@id/personal_info"
 
 
-                     />
+                    />
 
                 <TextView
                     android:id="@+id/user_phone"
@@ -77,7 +75,7 @@
                     android:layout_marginStart="8dp"
 
                     android:layout_marginTop="12dp"
-                    android:text="Phone"
+                    android:text="Leadership"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"
 
@@ -96,7 +94,7 @@
                     android:layout_marginStart="8dp"
 
                     android:layout_marginTop="12dp"
-                    android:text="Birthday"
+                    android:text="Productivity"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"
 
@@ -108,14 +106,14 @@
 
                     />
                 <TextView
-                    android:id="@+id/user_uni"
+                    android:id="@+id/user_teamwork"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
 
                     android:layout_marginTop="12dp"
-                    android:text="University"
+                    android:text="Team work"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"
 
@@ -126,19 +124,7 @@
 
 
                     />
-                <TextView
-                    android:id="@+id/user_major"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginTop="12dp"
-                    android:text="Major"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/user_uni"
-                    app:layout_constraintTop_toBottomOf="@id/user_uni"
 
-                    />
                 <LinearLayout
                     android:orientation="vertical"
                     android:id="@+id/border"
@@ -148,65 +134,115 @@
                     app:layout_constraintTop_toBottomOf="@id/personal_info"
                     app:layout_constraintStart_toEndOf="@id/personal_info"
                     android:layout_marginLeft="30dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar
+                    android:id="@+id/progress_bar_1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="5dp"
+                    android:indeterminate="false"
+                    android:maxHeight="12dp"
+                    android:minHeight="12dp"
+                    android:progress="40"
                     app:layout_constraintTop_toTopOf="@+id/user_email"
                     app:layout_constraintBottom_toBottomOf="@+id/user_email"
                     app:layout_constraintStart_toEndOf="@id/border"
                     android:layout_marginLeft="12dp"
-                    android:text="AlaaKurdi@live.com"
-                    android:textColor="@android:color/white"
+                    app:backgroundColor="@android:color/white"
+                    app:progressColor="@color/progress"/>
 
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar
+                    android:id="@+id/progress_bar_2"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="5dp"
+                    android:indeterminate="false"
+                    android:maxHeight="12dp"
+                    android:minHeight="12dp"
+                    android:progress="40"
                     app:layout_constraintTop_toTopOf="@+id/user_phone"
                     app:layout_constraintBottom_toBottomOf="@+id/user_phone"
                     app:layout_constraintStart_toEndOf="@id/border"
                     android:layout_marginLeft="12dp"
-                    android:text="01008460079"
-                    android:textColor="@android:color/white"
+                    app:backgroundColor="@android:color/white"
+                    app:progressColor="@color/progress"/>
 
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar
+                    android:id="@+id/progress_bar_3"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="5dp"
+                    android:indeterminate="false"
+                    android:maxHeight="12dp"
+                    android:minHeight="12dp"
+                    android:progress="40"
                     app:layout_constraintTop_toTopOf="@+id/user_birthday"
                     app:layout_constraintBottom_toBottomOf="@+id/user_birthday"
                     app:layout_constraintStart_toEndOf="@id/border"
                     android:layout_marginLeft="12dp"
-                    android:text="1/2/1995"
-                    android:textColor="@android:color/white"
+                    app:backgroundColor="@android:color/white"
+                    app:progressColor="@color/progress"/>
 
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="@+id/user_uni"
-                    app:layout_constraintBottom_toBottomOf="@+id/user_uni"
+                <com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar
+                    android:id="@+id/progress_bar_4"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="5dp"
+                    android:indeterminate="false"
+                    android:maxHeight="12dp"
+                    android:minHeight="12dp"
+                    android:progress="40"
+                    app:layout_constraintTop_toTopOf="@+id/user_teamwork"
+                    app:layout_constraintBottom_toBottomOf="@+id/user_teamwork"
                     app:layout_constraintStart_toEndOf="@id/border"
                     android:layout_marginLeft="12dp"
-                    android:text="GUC"
-                    android:textColor="@android:color/white"
-
-                    />
-
+                    app:backgroundColor="@android:color/white"
+                    app:progressColor="@color/progress"/>
                 <TextView
+                    android:id="@+id/commscore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="@+id/user_major"
-                    app:layout_constraintBottom_toBottomOf="@+id/user_major"
-                    app:layout_constraintStart_toEndOf="@id/border"
-                    android:layout_marginLeft="12dp"
-                    android:text="Punditry"
+                    android:textSize="10sp"
                     android:textColor="@android:color/white"
-
+                    android:text="5"
+                    app:layout_constraintEnd_toEndOf="@id/progress_bar_1"
+                    app:layout_constraintBottom_toTopOf="@id/progress_bar_1"
+                    android:layout_marginBottom="1dp"
                     />
+                <TextView
+                    android:id="@+id/leaderscore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="@android:color/white"
+                    android:text="5"
+                    app:layout_constraintEnd_toEndOf="@id/progress_bar_2"
+                    app:layout_constraintBottom_toTopOf="@id/progress_bar_2"
+                    android:layout_marginBottom="1dp"
+                    />
+                <TextView
+                    android:id="@+id/prodscore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="@android:color/white"
+                    android:text="5"
+                    app:layout_constraintEnd_toEndOf="@id/progress_bar_3"
+                    app:layout_constraintBottom_toTopOf="@id/progress_bar_3"
+                    android:layout_marginBottom="1dp"
+                    />
+                <TextView
+                    android:id="@+id/teamscore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="@android:color/white"
+                    android:text="5"
+                    app:layout_constraintEnd_toEndOf="@id/progress_bar_4"
+                    app:layout_constraintBottom_toTopOf="@id/progress_bar_4"
+                    android:layout_marginBottom="1dp"
+                    />
+
+
             </android.support.constraint.ConstraintLayout>
 
 
@@ -216,4 +252,5 @@
 
     </LinearLayout>
 
-</LinearLayout>
+
+</FrameLayout>

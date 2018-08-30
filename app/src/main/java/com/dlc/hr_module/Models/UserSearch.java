@@ -11,6 +11,10 @@ public class UserSearch {
     @SerializedName("name")
     @Expose
     public String name ;
+    public String email;
+    public String title;
+
+
     @SerializedName("team")
     @Expose
     public String team;
@@ -42,9 +46,11 @@ public class UserSearch {
         this.position = position;
     }
 
-    public UserSearch(String name, String team, String position) {
+    public UserSearch(String name, String email,String team, String position , String title) {
         this.name = name;
         this.team = team;
         this.position = position;
+        this.email = email;
+        this.title = title;
     }
 }

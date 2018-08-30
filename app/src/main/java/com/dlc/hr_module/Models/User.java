@@ -17,7 +17,7 @@ public class User {
     private String name;
     private  Integer company_id;
     private String user_image;
-    private Date birthdate;
+    private String birthdate;
     private String major;
     private String college;
     private String position;
@@ -31,6 +31,19 @@ public class User {
     @SerializedName("password")
     @Expose
     private String password;
+
+    public User(String name, String email, String password, String team, String title , String position , String birthdate, String major,String college, String ImageView) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.team = team;
+        this.title = title;
+        this.position = position;
+        this.birthdate = birthdate;
+        this.major = major;
+        this.college =college;
+        this.user_image = ImageView;
+    }
 
     public User(String name, String email, String password) {
         this.name = name;
@@ -70,11 +83,11 @@ public class User {
         this.user_image = user_image;
     }
 
-    public Date getBirthdate() {
+    public String getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(Date birthdate) {
+    public void setBirthdate(String  birthdate) {
         this.birthdate = birthdate;
     }
 

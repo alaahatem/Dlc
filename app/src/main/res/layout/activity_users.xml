@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.dlc.hr_module.Users.UsersActivity">
-    <FrameLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:id="@+id/userfragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="match_parent"></LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
