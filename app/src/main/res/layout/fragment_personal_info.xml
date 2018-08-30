@@ -6,86 +6,220 @@
     android:orientation="vertical"
     tools:context="com.dlc.hr_module.Users.PersonalInfoFragment">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="179.3dp">
 
-        <ImageView
-            android:id="@+id/MyImage"
-            android:layout_width="82.7dp"
-            android:layout_height="75.3dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:src="@drawable/noimage" />
-
-        <TextView
-            android:id="@+id/textName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/MyImage"
-            android:layout_centerHorizontal="true"
-            android:text="Alaa Kurdi"
-            android:textSize="16.7sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textTeam"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textName"
-            android:layout_centerHorizontal="true"
-            android:text="Android Developer"
-            android:textSize="14.3sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textTeam"
-            android:layout_centerHorizontal="true"
-            android:text="Intern"
-            android:textSize="13.7sp" />
-
-    </RelativeLayout>
-
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="315dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:background="@color/personal"
+            app:cardBackgroundColor="@color/personal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/personal_info"
+                    android:layout_width="65dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="150.7dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Personal Info"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+
+                    app:layout_constraintHorizontal_bias="0.168"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.174" />
+
+                <TextView
+                    android:id="@+id/user_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="208dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+
+                    android:layout_marginTop="16dp"
+                    android:text="Email"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+
+                    app:layout_constraintHorizontal_bias="0.139"
+                    app:layout_constraintStart_toStartOf="@id/personal_info"
+                    app:layout_constraintEnd_toEndOf="@id/personal_info"
+                    app:layout_constraintTop_toBottomOf="@id/personal_info"
+
+
+                     />
+
+                <TextView
+                    android:id="@+id/user_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+
+                    android:layout_marginTop="12dp"
+                    android:text="Phone"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+
+                    app:layout_constraintEnd_toEndOf="@id/user_email"
+                    app:layout_constraintHorizontal_bias="0.363"
+                    app:layout_constraintStart_toStartOf="@id/user_email"
+                    app:layout_constraintTop_toBottomOf="@id/user_email"
+
+
+                    />
+                <TextView
+                    android:id="@+id/user_birthday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+
+                    android:layout_marginTop="12dp"
+                    android:text="Birthday"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+
+                    app:layout_constraintEnd_toEndOf="@id/user_phone"
+                    app:layout_constraintHorizontal_bias="0.363"
+                    app:layout_constraintStart_toStartOf="@id/user_phone"
+                    app:layout_constraintTop_toBottomOf="@id/user_phone"
+
+
+                    />
+                <TextView
+                    android:id="@+id/user_uni"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+
+                    android:layout_marginTop="12dp"
+                    android:text="University"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+
+                    app:layout_constraintEnd_toEndOf="@id/user_birthday"
+                    app:layout_constraintHorizontal_bias="0.363"
+                    app:layout_constraintStart_toStartOf="@id/user_birthday"
+                    app:layout_constraintTop_toBottomOf="@id/user_birthday"
+
+
+                    />
+                <TextView
+                    android:id="@+id/user_major"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+
+                    android:layout_marginTop="12dp"
+                    android:text="Major"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+
+                    app:layout_constraintEnd_toEndOf="@id/user_uni"
+                    app:layout_constraintHorizontal_bias="0.363"
+                    app:layout_constraintStart_toStartOf="@id/user_uni"
+                    app:layout_constraintTop_toBottomOf="@id/user_uni"
+
+
+                    />
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:id="@+id/border"
+                    android:layout_width="2dp"
+                    android:layout_height="160dp"
+                    android:background="@android:color/white"
+                    app:layout_constraintTop_toBottomOf="@id/personal_info"
+                    app:layout_constraintStart_toEndOf="@id/personal_info"
+                    android:layout_marginLeft="30dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@+id/user_email"
+                    app:layout_constraintBottom_toBottomOf="@+id/user_email"
+                    app:layout_constraintStart_toEndOf="@id/border"
+                    android:layout_marginLeft="12dp"
+                    android:text="AlaaKurdi@live.com"
+                    android:textColor="@android:color/white"
+
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@+id/user_phone"
+                    app:layout_constraintBottom_toBottomOf="@+id/user_phone"
+                    app:layout_constraintStart_toEndOf="@id/border"
+                    android:layout_marginLeft="12dp"
+                    android:text="01008460079"
+                    android:textColor="@android:color/white"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@+id/user_birthday"
+                    app:layout_constraintBottom_toBottomOf="@+id/user_birthday"
+                    app:layout_constraintStart_toEndOf="@id/border"
+                    android:layout_marginLeft="12dp"
+                    android:text="1/2/1995"
+                    android:textColor="@android:color/white"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@+id/user_uni"
+                    app:layout_constraintBottom_toBottomOf="@+id/user_uni"
+                    app:layout_constraintStart_toEndOf="@id/border"
+                    android:layout_marginLeft="12dp"
+                    android:text="GUC"
+                    android:textColor="@android:color/white"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@+id/user_major"
+                    app:layout_constraintBottom_toBottomOf="@+id/user_major"
+                    app:layout_constraintStart_toEndOf="@id/border"
+                    android:layout_marginLeft="12dp"
+                    android:text="Punditry"
+                    android:textColor="@android:color/white"
+
+                    />
+            </android.support.constraint.ConstraintLayout>
+
 
 
         </android.support.v7.widget.CardView>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
 
-
-            android:text="Email"
-            android:textColor="@android:color/white"
-            tools:layout_editor_absoluteX="51dp"
-            tools:layout_editor_absoluteY="49dp" />
-
-        <TextView
-            android:layout_width="54sp"
-            android:layout_height="wrap_content"
-            android:text="PERSONAL INFO"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="51dp"
-            tools:layout_editor_absoluteY="16dp" />
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 
 </LinearLayout>

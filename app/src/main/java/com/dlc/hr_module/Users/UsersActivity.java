@@ -12,7 +12,7 @@ public class UsersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users);
-        getSupportFragmentManager().beginTransaction().replace(R.id.userfragment,new UsersFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.userfragment,new UserProfilesFragment()).commit();
     }
     
 
