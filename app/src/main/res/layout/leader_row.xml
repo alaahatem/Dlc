@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="70dp">
+
+    <TextView
+        android:id="@+id/numbertv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:text="1"
+        android:textSize="19sp"
+
+         />
+
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="41dp"
+        android:layout_height="42dp"
+        android:layout_toRightOf="@+id/numbertv"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="7dp"
+         />
+    <LinearLayout
+        android:id="@+id/linearName"
+        android:layout_width="109dp"
+        android:layout_height="34dp"
+        android:orientation="vertical"
+        android:layout_toRightOf="@+id/imageview"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="7dp"
+
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="Alaa Kurdianos"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="team"
+            android:textSize="12sp"
+            />
+    </LinearLayout>
+
+
+</RelativeLayout>

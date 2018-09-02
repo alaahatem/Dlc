@@ -13,6 +13,7 @@ import com.dlc.hr_module.R;
 public class UserProfilesFragment extends Fragment {
     CardView personalInfoCV;
     CardView workingHoursCV;
+    CardView VacationDaysCV;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,12 +24,26 @@ public class UserProfilesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_user_profiles, container, false);
         personalInfoCV = view.findViewById(R.id.personalInfoCard);
         workingHoursCV = view.findViewById(R.id.workingHoursCard);
+        VacationDaysCV = view.findViewById(R.id.VacationDaysCV);
+        VacationDaysCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                VacationFragment frag = new VacationFragment();
+                android.support.v4.app.FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.anim.slideup, R.anim.slidedown);
+                fragmentTransaction.replace(R.id.thefragments, frag);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
         personalInfoCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 PersonalInfoFragment frag = new PersonalInfoFragment();
                 android.support.v4.app.FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fm.beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.anim.slideup, R.anim.slidedown);
                 fragmentTransaction.replace(R.id.thefragments, frag);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();

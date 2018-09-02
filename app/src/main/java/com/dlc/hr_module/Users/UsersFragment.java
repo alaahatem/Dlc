@@ -4,6 +4,8 @@ package com.dlc.hr_module.Users;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -46,15 +48,18 @@ public class UsersFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_users, container, false);
-        usersGrid = view.findViewById(R.id.usersgrid);
+        RecyclerView recyclerView = view.findViewById(R.id.RecyclerView);
+        int numberOfColumns = 2;
+        recyclerView.setLayoutManager(new GridLayoutManager(this.getActivity(),numberOfColumns));
+        UsersAdapter adapter = new UsersAdapter(getContext(),Constants.AllUsers);
+        recyclerView.setAdapter(adapter);
         filteredUsers = new ArrayList<>();
         AllUsers = new ArrayList<>();
         search = view.findViewById(R.id.searchIcon);
         searchet = view.findViewById(R.id.searchet);
         api = RetrofitClient.getClient().create(ApiService.class);
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        UsersAdapter adapter = new UsersAdapter(getActivity(), Constants.AllUsers, fragmentManager);
-        usersGrid.setAdapter(adapter);
+
+
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,5 +128,6 @@ public class UsersFragment extends Fragment {
         }
         return filteredUsers;
     }
+
 
 }

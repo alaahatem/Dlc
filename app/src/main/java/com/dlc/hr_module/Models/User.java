@@ -4,7 +4,9 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by hp on 02/08/2018.
@@ -15,6 +17,9 @@ public class User {
    @SerializedName("name")
    @Expose
     private String name;
+   private List<String> vacation_days;
+   private List<String> Sick_leaves;
+   private List<String> WorkFromHome;
     private  Integer company_id;
     private String user_image;
     private String birthdate;
@@ -32,7 +37,7 @@ public class User {
     @Expose
     private String password;
 
-    public User(String name, String email, String password, String team, String title , String position , String birthdate, String major,String college, String ImageView) {
+    public User(String name, String email, String password, String team, String title , String position , String birthdate, String major,String college, String ImageView, List<String>Vacation_days, List<String>Sick_leaves, List<String> WorkHome) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -43,12 +48,39 @@ public class User {
         this.major = major;
         this.college =college;
         this.user_image = ImageView;
+        this.vacation_days = Vacation_days;
+        this.Sick_leaves = Sick_leaves;
+        this.WorkFromHome = WorkHome;
     }
 
     public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
+    }
+
+    public List<String> getVacation_days() {
+        return vacation_days;
+    }
+
+    public void setVacation_days(List<String> vacation_days) {
+        this.vacation_days = vacation_days;
+    }
+
+    public List<String> getSick_leaves() {
+        return Sick_leaves;
+    }
+
+    public void setSick_leaves(List<String> sick_leaves) {
+        Sick_leaves = sick_leaves;
+    }
+
+    public List<String> getWorkFromHome() {
+        return WorkFromHome;
+    }
+
+    public void setWorkFromHome(List<String> workFromHome) {
+        WorkFromHome = workFromHome;
     }
 
     public String getPassword() {

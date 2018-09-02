@@ -119,19 +119,12 @@
         android:layout_height="440dp"
         >
 
-        <GridView
-            android:id="@+id/usersgrid"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:columnWidth="170dp"
+     <android.support.v7.widget.RecyclerView
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:id="@+id/RecyclerView"
 
-            android:gravity="center"
-            android:horizontalSpacing="10dp"
-            android:numColumns="auto_fit"
-            android:stretchMode="columnWidth"
-            android:verticalSpacing="10dp">
-
-        </GridView>
+         ></android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
 

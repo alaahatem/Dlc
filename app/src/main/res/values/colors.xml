@@ -14,5 +14,6 @@
     <color name="personal">#f9c660</color>
     <color name="working_hours">#4c90df</color>
     <color name="progress">#f1e981</color>
+    <color name="noImage">#d8d8d8</color>
 </resources>
 
