@@ -18,26 +18,64 @@
         android:layout_centerHorizontal="true"
         app:cardBackgroundColor="@android:color/white"
         >
-        <RelativeLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="78dp"
-            android:layout_height="76dp"
-            android:layout_gravity="center_horizontal|bottom"
+       <TextView
+           android:id="@+id/MyNameLeader"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="top|center_horizontal"
+           android:textSize="14sp"
+            android:text="Alaa Hatem"
+           android:textColor="@color/signup"
+           android:textStyle="bold"
+           />
+        <TextView
+            android:id="@+id/MyRankLeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="34sp"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginLeft="30sp"
+            android:text="4th"
+            android:textStyle="bold"
+            android:textColor="@color/LeaderPink"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginRight="28sp"
             >
-            <android.support.v4.widget.CircleImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/oval"
-                />
-            <ImageView
-                android:layout_width="38dp"
-                android:layout_height="49dp"
-                android:background="@drawable/man_user"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
+        <TextView
+            android:id="@+id/MyPointsLeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="34sp"
+
+
+            android:textStyle="bold"
+            android:text="40"
+            android:textColor="@color/LeaderPink"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pts"
+            android:textColor="@color/LeaderPink"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            />
+        </LinearLayout>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/MyImageLeader"
+                android:layout_width="98dp"
+                android:layout_height="96dp"
+
+                android:src="@drawable/man_user"
+                android:background="@android:color/transparent"
+                android:layout_gravity="bottom|center_horizontal"
                 />
 
-        </RelativeLayout>
 
 
 
@@ -50,6 +88,8 @@
         android:orientation="horizontal"
         >
         <Button
+            android:id="@+id/CurrentLeaderboard"
+
             android:layout_gravity="bottom"
             android:layout_width="58dp"
             android:layout_height="25dp"
@@ -62,6 +102,7 @@
             />
 
         <Button
+            android:id="@+id/SprintLeaderboard"
             android:layout_gravity="bottom"
             android:layout_width="58dp"
             android:layout_height="25dp"
@@ -74,6 +115,7 @@
             />
 
         <Button
+            android:id="@+id/MonthLeaderboard"
             android:layout_gravity="bottom"
             android:layout_width="58dp"
             android:layout_height="25dp"
@@ -85,6 +127,7 @@
 
             />
         <Button
+            android:id="@+id/QuarterLeaderboard"
             android:layout_gravity="bottom"
             android:layout_width="58dp"
             android:layout_height="25dp"
@@ -97,6 +140,7 @@
             />
 
         <Button
+            android:id="@+id/YearLeaderboard"
             android:layout_gravity="bottom"
             android:layout_width="58dp"
             android:layout_height="25dp"

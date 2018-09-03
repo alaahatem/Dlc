@@ -17,6 +17,7 @@ public class User {
    @SerializedName("name")
    @Expose
     private String name;
+   private long user_id;
    private List<String> vacation_days;
    private List<String> Sick_leaves;
    private List<String> WorkFromHome;
@@ -37,7 +38,7 @@ public class User {
     @Expose
     private String password;
 
-    public User(String name, String email, String password, String team, String title , String position , String birthdate, String major,String college, String ImageView, List<String>Vacation_days, List<String>Sick_leaves, List<String> WorkHome) {
+    public User(long id,String name, String email, String password, String team, String title , String position , String birthdate, String major,String college, String ImageView, List<String>Vacation_days, List<String>Sick_leaves, List<String> WorkHome) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -51,6 +52,15 @@ public class User {
         this.vacation_days = Vacation_days;
         this.Sick_leaves = Sick_leaves;
         this.WorkFromHome = WorkHome;
+        this.user_id =id;
+    }
+
+    public long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(long user_id) {
+        this.user_id = user_id;
     }
 
     public User(String name, String email, String password) {

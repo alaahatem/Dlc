@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="310dp"
     android:layout_height="70dp">
 
     <TextView
@@ -11,18 +11,20 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
-        android:text="1"
+
         android:textSize="19sp"
+        android:textColor="@color/signup"
 
          />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageview"
         android:layout_width="41dp"
         android:layout_height="42dp"
         android:layout_toRightOf="@+id/numbertv"
         android:layout_centerVertical="true"
         android:layout_marginLeft="7dp"
+        android:background="@drawable/leaderimage"
          />
     <LinearLayout
         android:id="@+id/linearName"
@@ -35,19 +37,33 @@
 
         >
         <TextView
+            android:id="@+id/nametv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:text="Alaa Kurdianos"
+
+            android:textStyle="bold"
 
             />
         <TextView
+            android:id="@+id/teamtv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="team"
+
             android:textSize="12sp"
             />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/UserPoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:textSize="19sp"
+        android:layout_toRightOf="@id/linearName"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="37dp"
+        android:textStyle="bold"
+        />
 
 </RelativeLayout>
