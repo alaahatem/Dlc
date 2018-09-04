@@ -27,6 +27,8 @@ import com.dlc.hr_module.R;
 import com.dlc.hr_module.RetrofitClient;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import retrofit2.Call;
@@ -38,8 +40,8 @@ public class UsersFragment extends Fragment {
     ImageView search;
     EditText searchet;
     UsersAdapter adapter;
-    List<UserSearch> AllUsers;
-    List<UserSearch> filteredUsers;
+    List<User> AllUsers;
+    List<User> filteredUsers;
     ApiService api;
     GridView usersGrid;
 
@@ -50,11 +52,19 @@ public class UsersFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_users, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.RecyclerView);
         int numberOfColumns = 2;
+        AllUsers = new ArrayList<>();
         recyclerView.setLayoutManager(new GridLayoutManager(this.getActivity(),numberOfColumns));
-        UsersAdapter adapter = new UsersAdapter(getContext(),Constants.AllUsers);
+        AllUsers = Constants.AllUsers;
+        Collections.sort(AllUsers, new Comparator<User>() {
+            @Override
+            public int compare(User o1, User o2) {
+                return  o1.getName().compareTo(o2.getName());
+            }
+        });
+        final UsersAdapter adapter = new UsersAdapter(getContext(),AllUsers);
         recyclerView.setAdapter(adapter);
         filteredUsers = new ArrayList<>();
-        AllUsers = new ArrayList<>();
+
         search = view.findViewById(R.id.searchIcon);
         searchet = view.findViewById(R.id.searchet);
         api = RetrofitClient.getClient().create(ApiService.class);
@@ -78,7 +88,7 @@ public class UsersFragment extends Fragment {
 
                         if (response.isSuccessful()) {
                             Toast.makeText(getActivity(), response.body().get(0).getName(), Toast.LENGTH_LONG).show();
-                            AllUsers = response.body();
+//                            AllUsers = response.body();
 
 //                            UsersAdapter adapter = new UsersAdapter(getActivity(), Constants.AllUsers);
 //                            usersGrid.setAdapter(adapter);
@@ -107,18 +117,20 @@ public class UsersFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
 
-
+            filteredUsers = filter(s.toString(),Constants.AllUsers);
+            adapter.filterlist(filteredUsers);
             }
         });
         return view;
     }
 
 
-    public List<UserSearch> filter(String text, List<UserSearch> user) {
+
+    public List<User> filter(String text, List<User> user) {
         filteredUsers = new ArrayList<>();
 
 
-        for (UserSearch item : user) {
+        for (User item : user) {
             if (item.getName().toLowerCase().contains(text.toLowerCase())) {
                 filteredUsers.add(item);
 

@@ -114,6 +114,8 @@ public class ConfigFragment extends Fragment {
         createCompany.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getContext(), Home.class);
+                startActivity(intent);
                 api = RetrofitClient.getClient().create(ApiService.class);
                 Company company = new Company(companyName, max_sick, max_vac, max_home, levels, criteriaFactors);
                 Call<Company> companyCall = api.addcompany(company);
@@ -133,8 +135,7 @@ public class ConfigFragment extends Fragment {
 //                        Toast.makeText(getContext(),"Message "+bodyToString(call.request())+ " error: "+response.errorBody().toString(),Toast.LENGTH_LONG).show();
                         Log.d(TAG, bodyToString(call.request()));
                         if (response.isSuccessful()) {
-                            Intent intent = new Intent(getContext(), Home.class);
-                            startActivity(intent);
+
                         }
 
 

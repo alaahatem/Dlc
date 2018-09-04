@@ -150,60 +150,65 @@
                     android:layout_marginLeft="30dp"/>
 
                 <TextView
+                    android:id="@+id/personalEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="@+id/user_email"
                     app:layout_constraintBottom_toBottomOf="@+id/user_email"
                     app:layout_constraintStart_toEndOf="@id/border"
                     android:layout_marginLeft="12dp"
-                    android:text="AlaaKurdi@live.com"
+                    android:text="Not Supplied"
                     android:textColor="@android:color/white"
 
                     />
                 <TextView
+                    android:id="@+id/personalPhone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="@+id/user_phone"
                     app:layout_constraintBottom_toBottomOf="@+id/user_phone"
                     app:layout_constraintStart_toEndOf="@id/border"
                     android:layout_marginLeft="12dp"
-                    android:text="01008460079"
+                    android:text="Not Supplied"
                     android:textColor="@android:color/white"
 
                     />
 
                 <TextView
+                    android:id="@+id/personalBirthdate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="@+id/user_birthday"
                     app:layout_constraintBottom_toBottomOf="@+id/user_birthday"
                     app:layout_constraintStart_toEndOf="@id/border"
                     android:layout_marginLeft="12dp"
-                    android:text="1/2/1995"
+                    android:text="Not Supplied"
                     android:textColor="@android:color/white"
 
                     />
 
                 <TextView
+                    android:id="@+id/personalUniversity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="@+id/user_uni"
                     app:layout_constraintBottom_toBottomOf="@+id/user_uni"
                     app:layout_constraintStart_toEndOf="@id/border"
                     android:layout_marginLeft="12dp"
-                    android:text="GUC"
+                    android:text="Not Supplied"
                     android:textColor="@android:color/white"
 
                     />
 
                 <TextView
+                    android:id="@+id/personalMajor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="@+id/user_major"
                     app:layout_constraintBottom_toBottomOf="@+id/user_major"
                     app:layout_constraintStart_toEndOf="@id/border"
                     android:layout_marginLeft="12dp"
-                    android:text="Punditry"
+                    android:text="Not Supplied"
                     android:textColor="@android:color/white"
 
                     />

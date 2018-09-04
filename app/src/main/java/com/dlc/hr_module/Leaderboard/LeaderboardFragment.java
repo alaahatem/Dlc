@@ -1,6 +1,7 @@
 package com.dlc.hr_module.Leaderboard;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -42,6 +43,7 @@ public class LeaderboardFragment extends Fragment {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         SortedPoints = new ArrayList<>();
         recyclerView = view.findViewById(R.id.UserRecycler);
+        QuarterLeaderboard = view.findViewById(R.id.QuarterLeaderboard);
         CurrentLeaderboard = view.findViewById(R.id.CurrentLeaderboard);
         SprintLeaderboard = view.findViewById(R.id.SprintLeaderboard);
         MonthLeaderboard = view.findViewById(R.id.MonthLeaderboard);
@@ -58,7 +60,17 @@ public class LeaderboardFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
+                CurrentLeaderboard.setBackgroundColor(getResources().getColor(R.color.signup));
+                CurrentLeaderboard.setTextColor(Color.WHITE);
+                SprintLeaderboard.setBackgroundColor(Color.WHITE);
+                SprintLeaderboard.setTextColor(getResources().getColor(R.color.signup));
 
+                MonthLeaderboard.setBackgroundColor(Color.WHITE);
+                MonthLeaderboard.setTextColor(getResources().getColor(R.color.signup));
+                YearLeaderboard.setBackgroundColor(Color.WHITE);
+                YearLeaderboard.setTextColor(getResources().getColor(R.color.signup));
+                QuarterLeaderboard.setBackgroundColor(Color.WHITE);
+                QuarterLeaderboard.setTextColor(getResources().getColor(R.color.signup));
                 Collections.sort(SortedPoints, new Comparator<Leaderboard>() {
                     public int compare(Leaderboard b1, Leaderboard b2) {
                         return Long.compare(b2.getPoints(),b1.getPoints());
@@ -87,6 +99,17 @@ public class LeaderboardFragment extends Fragment {
         MonthLeaderboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MonthLeaderboard.setBackgroundColor(getResources().getColor(R.color.signup));
+                MonthLeaderboard.setTextColor(Color.WHITE);
+                SprintLeaderboard.setBackgroundColor(Color.WHITE);
+                SprintLeaderboard.setTextColor(getResources().getColor(R.color.signup));
+
+                CurrentLeaderboard.setBackgroundColor(Color.WHITE);
+                CurrentLeaderboard.setTextColor(getResources().getColor(R.color.signup));
+                YearLeaderboard.setBackgroundColor(Color.WHITE);
+                YearLeaderboard.setTextColor(getResources().getColor(R.color.signup));
+                QuarterLeaderboard.setBackgroundColor(Color.WHITE);
+                QuarterLeaderboard.setTextColor(getResources().getColor(R.color.signup));
                 Collections.sort(Constants.MonthPoints, new Comparator<Leaderboard>() {
                     public int compare(Leaderboard b1, Leaderboard b2) {
                         return Long.compare(b2.getPoints(),b1.getPoints());

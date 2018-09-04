@@ -205,6 +205,50 @@
                     android:textSize="18sp" />
 
             </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+
+
+                android:id="@+id/Checkout_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="0.0px"
+                android:elevation="8dp"
+                app:cardElevation="10dp"
+                app:cardPreventCornerOverlap="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.686"
+                app:cardBackgroundColor="@android:color/holo_red_light"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_time_to_leave_black_24dp"
+                    android:tint="@android:color/background_dark" />
+
+                <TextView
+                    android:id="@+id/checkouttv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif-smallcaps"
+
+                    android:text="Check out"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
+
+            </android.support.v7.widget.CardView>
+
 
             <android.support.v7.widget.CardView
 

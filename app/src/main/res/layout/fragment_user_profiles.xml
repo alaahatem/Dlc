@@ -9,7 +9,7 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="179.3dp">
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/MyImage"
         android:layout_width="62.7dp"
         android:layout_height="62.7dp"
@@ -25,27 +25,38 @@
         android:layout_centerHorizontal="true"
         android:textSize="16.7sp"
         android:textStyle="bold"
-        android:text="Alaa Kurdi"
+        android:text="Not Supplied"
+        />
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textName"
+        android:layout_centerHorizontal="true"
+        android:textSize="14.3sp"
+        android:text="Not Supplied"
         />
 
     <TextView
         android:id="@+id/textTeam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textName"
+        android:layout_below="@id/textTitle"
         android:layout_centerHorizontal="true"
-        android:textSize="14.3sp"
-        android:text="Android Developer"
+        android:textSize="13.7sp"
+        android:text="Not Supplied"
         />
-
     <TextView
+        android:id="@+id/textStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textTeam"
         android:layout_centerHorizontal="true"
         android:textSize="13.7sp"
-        android:text="Intern"
+        android:text="Off Premises"
         />
+
 
 </RelativeLayout>
 <FrameLayout

@@ -2,6 +2,7 @@ package com.dlc.hr_module.Adapters;
 
 import android.content.Context;
 import android.media.Image;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -28,6 +29,8 @@ import com.dlc.hr_module.Users.UsersActivity;
 import com.dlc.hr_module.Users.UsersFragment;
 import com.squareup.picasso.Picasso;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import retrofit2.Call;
@@ -59,7 +62,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder>{
         return  new ViewHolder(view);
     }
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
             if(allUsers.get(position).getUser_image().isEmpty()){
                 Picasso.get().load(R.drawable.user).fit().into(holder.userImage);
             }
@@ -73,10 +76,26 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder>{
                 @Override
                 public void onClick(View v) {
                     UserProfilesFragment frag = new UserProfilesFragment();
+
+                    Bundle ImageBundle = new Bundle();
+
+                    ImageBundle.putString("userName",allUsers.get(position).getName());
+                    ImageBundle.putString("userImage",allUsers.get(position).getUser_image());
+                    ImageBundle.putString("userEmail",allUsers.get(position).getEmail());
+                    ImageBundle.putString("userBirthdate",allUsers.get(position).getBirthdate());
+                    ImageBundle.putString("userTeam",allUsers.get(position).getTeam());
+                    ImageBundle.putString("userPosition",allUsers.get(position).getPosition());
+                    ImageBundle.putString("userCollege",allUsers.get(position).getCollege());
+                    ImageBundle.putString("userMajor",allUsers.get(position).getMajor());
+                    ImageBundle.putString("userTitle",allUsers.get(position).getTitle());
+                    ImageBundle.putString("userPhone",allUsers.get(position).getPhone_number());
+                    ImageBundle.putString("userStatus",allUsers.get(position).getStatus());
+
+                    frag.setArguments(ImageBundle);
                     android.support.v4.app.FragmentManager fm = ((UsersActivity)context).getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fm.beginTransaction();
                     fragmentTransaction.replace(R.id.userfragment, frag);
-                    fragmentTransaction.addToBackStack(null);
+//                    fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();
                 }
             });
@@ -91,6 +110,17 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder>{
         else{
             return 0;
         }
+    }
+    public void filterlist(List<User> filteredList) {
+        Collections.sort(filteredList, new Comparator<User>() {
+            @Override
+            public int compare(User o1, User o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
+        allUsers = filteredList;
+
+        notifyDataSetChanged();
     }
 
 

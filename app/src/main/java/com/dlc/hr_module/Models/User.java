@@ -29,6 +29,7 @@ public class User {
     private String position;
     private String title;
     private String team;
+    private String phone_number;
     @SerializedName("email")
     @Expose
     private String email;
@@ -37,8 +38,8 @@ public class User {
     @SerializedName("password")
     @Expose
     private String password;
-
-    public User(long id,String name, String email, String password, String team, String title , String position , String birthdate, String major,String college, String ImageView, List<String>Vacation_days, List<String>Sick_leaves, List<String> WorkHome) {
+    private String status;
+    public User(long id,String name, String email, String password, String team, String title , String position , String birthdate, String major,String college, String ImageView, List<String>Vacation_days, List<String>Sick_leaves, List<String> WorkHome ,String phone_number, String status) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -53,6 +54,24 @@ public class User {
         this.Sick_leaves = Sick_leaves;
         this.WorkFromHome = WorkHome;
         this.user_id =id;
+        this.phone_number = phone_number;
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String  getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String  phone_number) {
+        this.phone_number = phone_number;
     }
 
     public long getUser_id() {
